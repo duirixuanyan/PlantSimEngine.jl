@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>单尺度模型转换为多尺度 · PlantSimEngine.jl</title><meta name="title" content="单尺度模型转换为多尺度 · PlantSimEngine.jl"/><meta property="og:title" content="单尺度模型转换为多尺度 · PlantSimEngine.jl"/><meta property="twitter:title" content="单尺度模型转换为多尺度 · PlantSimEngine.jl"/><meta name="description" content="Documentation for PlantSimEngine.jl."/><meta property="og:description" content="Documentation for PlantSimEngine.jl."/><meta property="twitter:description" content="Documentation for PlantSimEngine.jl."/><meta property="og:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\single_to_multiscale.html"/><meta property="twitter:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\single_to_multiscale.html"/><link rel="canonical" href="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\single_to_multiscale.html"/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../index.html">PlantSimEngine.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">首页</a></li><li><span class="tocitem">简介</span><ul><li><a class="tocitem" href="../introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？</a></li><li><a class="tocitem" href="../introduction/why_julia.html">为什么选择 Julia？</a></li></ul></li><li><span class="tocitem">前置条件</span><ul><li><a class="tocitem" href="../prerequisites/installing_plantsimengine.html">PlantSimEngine 的安装与运行</a></li><li><a class="tocitem" href="../prerequisites/key_concepts.html">关键概念</a></li><li><a class="tocitem" href="../prerequisites/julia_basics.html">Julia 语言基础</a></li></ul></li><li><span class="tocitem">分步教程 - 单尺度模拟</span><ul><li><a class="tocitem" href="../step_by_step/detailed_first_example.html">详细的第一个模拟</a></li><li><a class="tocitem" href="../step_by_step/simple_model_coupling.html">模型耦合</a></li><li><a class="tocitem" href="../step_by_step/model_switching.html">模型切换</a></li><li><a class="tocitem" href="../step_by_step/quick_and_dirty_examples.html">快速示例</a></li><li><a class="tocitem" href="../step_by_step/implement_a_process.html">实现一个过程</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model.html">实现一个模型</a></li><li><a class="tocitem" href="../step_by_step/parallelization.html">并行化</a></li><li><a class="tocitem" href="../step_by_step/advanced_coupling.html">高级耦合与硬依赖</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model_additional.html">实现一个模型：补充说明</a></li></ul></li><li><a class="tocitem" href="../model_execution.html">模型执行</a></li><li><span class="tocitem">数据处理</span><ul><li><a class="tocitem" href="../working_with_data/reducing_dof.html">降低自由度</a></li><li><a class="tocitem" href="../working_with_data/fitting.html">拟合</a></li><li><a class="tocitem" href="../working_with_data/inputs.html">输入类型</a></li><li><a class="tocitem" href="../working_with_data/visualising_outputs.html">可视化输出与数据</a></li><li><a class="tocitem" href="../working_with_data/floating_point_accumulation_error.html">浮点运算注意事项</a></li></ul></li><li><span class="tocitem">多尺度建模</span><ul><li><a class="tocitem" href="multiscale_considerations.html">多尺度建模考量</a></li><li class="is-active"><a class="tocitem" href="single_to_multiscale.html">单尺度模型转换为多尺度</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#将-ModelList-转换为多尺度映射"><span>将 ModelList 转换为多尺度映射</span></a></li><li><a class="tocitem" href="#为植物图形引入新的包"><span>为植物图形引入新的包</span></a></li><li><a class="tocitem" href="#运行多尺度模拟？"><span>运行多尺度模拟？</span></a></li><li><a class="tocitem" href="#添加第二个尺度"><span>添加第二个尺度</span></a></li><li><a class="tocitem" href="#ToyDegreeDaysCumulModel"><span>ToyDegreeDaysCumulModel</span></a></li></ul></li><li><a class="tocitem" href="multiscale.html">更多变量映射示例</a></li><li><a class="tocitem" href="multiscale_cyclic.html">循环依赖的处理</a></li><li><a class="tocitem" href="multiscale_coupling.html">多尺度耦合相关说明</a></li><li><input class="collapse-toggle" id="menuitem-7-6" type="checkbox"/><label class="tocitem" for="menuitem-7-6"><span class="docs-label">构建简单植株</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="multiscale_example_1.html">简单植株模拟</a></li><li><a class="tocitem" href="multiscale_example_2.html">拓展植株模拟</a></li><li><a class="tocitem" href="multiscale_example_3.html">修复植株模拟中的错误</a></li></ul></li><li><a class="tocitem" href="multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></li><li><span class="tocitem">故障排查与测试</span><ul><li><a class="tocitem" href="../troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html">故障排查</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/downstream_tests.html">自动化测试</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/tips_and_workarounds.html">技巧与常见问题</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/implicit_contracts.html">隐性约定</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../API/API_public.html">公共 API</a></li><li><a class="tocitem" href="../API/API_examples.html">示例模型</a></li><li><a class="tocitem" href="../API/API_private.html">内部 API</a></li></ul></li><li><a class="tocitem" href="../documentation_improvement.html">改进文档</a></li><li><a class="tocitem" href="../developers.html">开发者指南</a></li><li><a class="tocitem" href="../planned_features.html">规划功能</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">多尺度建模</a></li><li class="is-active"><a href="single_to_multiscale.html">单尺度模型转换为多尺度</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="single_to_multiscale.html">单尺度模型转换为多尺度</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/docs - 中文/src/multiscale/single_to_multiscale.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="将单尺度模拟转换为多尺度模拟"><a class="docs-heading-anchor" href="#将单尺度模拟转换为多尺度模拟">将单尺度模拟转换为多尺度模拟</a><a id="将单尺度模拟转换为多尺度模拟-1"></a><a class="docs-heading-anchor-permalink" href="#将单尺度模拟转换为多尺度模拟" title="Permalink"></a></h1><p>只需提供一个简单的多尺度树图（multi-scale tree graph），并声明一个将所有模型关联到唯一尺度层级的映射，就可以把单尺度模拟“伪”转变为多尺度模拟。</p><p>本页将演示如何完成该转换，并在此基础上添加一个新的尺度上的模型，从而使模拟真正实现多尺度。</p><p>完整的示例脚本可在 examples 文件夹找到，<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/examples/ToySingleToMultiScale.jl">点击此处查看</a></p><ul><li><a href="single_to_multiscale.html#将单尺度模拟转换为多尺度模拟">将单尺度模拟转换为多尺度模拟</a></li><li><a href="single_to_multiscale.html#将-ModelList-转换为多尺度映射">将 ModelList 转换为多尺度映射</a></li><li class="no-marker"><ul><li><a href="single_to_multiscale.html#为植物图形引入新的包">为植物图形引入新的包</a></li><li><a href="single_to_multiscale.html#运行多尺度模拟？">运行多尺度模拟？</a></li><li><a href="single_to_multiscale.html#添加第二个尺度">添加第二个尺度</a></li><li class="no-marker"><ul><li><a href="single_to_multiscale.html#TT_cu-模型的实现">TT_cu 模型的实现</a></li><li><a href="single_to_multiscale.html#将新的-TT_cu-模型关联到映射中的某个尺度">将新的 TT_cu 模型关联到映射中的某个尺度</a></li><li><a href="single_to_multiscale.html#尺度间的变量映射：MultiScaleModel-包装器">尺度间的变量映射：MultiScaleModel 包装器</a></li><li><a href="single_to_multiscale.html#运行多尺度模拟">运行多尺度模拟</a></li><li><a href="single_to_multiscale.html#单尺度与多尺度输出的对比">单尺度与多尺度输出的对比</a></li></ul></li><li><a href="single_to_multiscale.html#ToyDegreeDaysCumulModel">ToyDegreeDaysCumulModel</a></li></ul></li></ul><h1 id="将-ModelList-转换为多尺度映射"><a class="docs-heading-anchor" href="#将-ModelList-转换为多尺度映射">将 ModelList 转换为多尺度映射</a><a id="将-ModelList-转换为多尺度映射-1"></a><a class="docs-heading-anchor-permalink" href="#将-ModelList-转换为多尺度映射" title="Permalink"></a></h1><p>例如，让我们回到<a href="../step_by_step/model_switching.html#模型切换">模型切换</a>小节中提到的 <a href="../step_by_step/simple_model_coupling.html#ModelList"><code>ModelList</code></a>，该模型组合了光截获模型、叶面积指数模型和碳生物量增长模型：</p><pre><code class="language-julia hljs">using PlantMeteo
+using PlantSimEngine
+using PlantSimEngine.Examples
+using CSV
+
+meteo_day = CSV.read(joinpath(pkgdir(PlantSimEngine), &quot;examples/meteo_day.csv&quot;), DataFrame, header=18)
+
+models_singlescale = ModelList(
+    ToyLAIModel(),
+    Beer(0.5),
+    ToyRUEGrowthModel(0.2),
+    status=(TT_cu=cumsum(meteo_day.TT),),
+)
+
+outputs_singlescale = run!(models_singlescale, meteo_day)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">TimeStepTable{Status{(:TT_cu, :LAI, :aPPFD,...}(365 x 5):
+<span class="sgr31">╭─────┬──────────┬────────────┬───────────┬────────────┬───────────────────╮</span>
+<span class="sgr31">│</span><span class="sgr1"> Row </span><span class="sgr31">│</span><span class="sgr1">    TT_cu </span><span class="sgr31">│</span><span class="sgr1">        LAI </span><span class="sgr31">│</span><span class="sgr1">     aPPFD </span><span class="sgr31">│</span><span class="sgr1">    biomass </span><span class="sgr31">│</span><span class="sgr1"> biomass_increment </span><span class="sgr31">│</span>
+<span class="sgr31">│</span>     <span class="sgr31">│</span><span class="sgr90">  Float64 </span><span class="sgr31">│</span><span class="sgr90">    Float64 </span><span class="sgr31">│</span><span class="sgr90">   Float64 </span><span class="sgr31">│</span><span class="sgr90">    Float64 </span><span class="sgr31">│</span><span class="sgr90">           Float64 </span><span class="sgr31">│</span>
+<span class="sgr31">├─────┼──────────┼────────────┼───────────┼────────────┼───────────────────┤</span>
+<span class="sgr31">│</span>   1 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0396961 <span class="sgr31">│</span> 0.00793922 <span class="sgr31">│</span>        0.00793922 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   2 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span>   0.02173 <span class="sgr31">│</span>  0.0122852 <span class="sgr31">│</span>          0.004346 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   3 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0314899 <span class="sgr31">│</span>  0.0185832 <span class="sgr31">│</span>        0.00629798 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   4 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0390834 <span class="sgr31">│</span>  0.0263999 <span class="sgr31">│</span>        0.00781668 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   5 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0454514 <span class="sgr31">│</span>  0.0354902 <span class="sgr31">│</span>        0.00909028 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   6 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0472677 <span class="sgr31">│</span>  0.0449437 <span class="sgr31">│</span>        0.00945354 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   7 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span>   0.04346 <span class="sgr31">│</span>  0.0536357 <span class="sgr31">│</span>        0.00869201 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   8 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0469832 <span class="sgr31">│</span>  0.0630324 <span class="sgr31">│</span>        0.00939665 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   9 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0291703 <span class="sgr31">│</span>  0.0688664 <span class="sgr31">│</span>        0.00583406 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  10 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0140052 <span class="sgr31">│</span>  0.0716675 <span class="sgr31">│</span>        0.00280105 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  11 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0505283 <span class="sgr31">│</span>  0.0817731 <span class="sgr31">│</span>         0.0101057 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  12 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0405277 <span class="sgr31">│</span>  0.0898787 <span class="sgr31">│</span>        0.00810554 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  13 <span class="sgr31">│</span>   0.5625 <span class="sgr31">│</span> 0.00557831 <span class="sgr31">│</span> 0.0297814 <span class="sgr31">│</span>   0.095835 <span class="sgr31">│</span>        0.00595629 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  14 <span class="sgr31">│</span> 0.945833 <span class="sgr31">│</span> 0.00559777 <span class="sgr31">│</span> 0.0433269 <span class="sgr31">│</span>     0.1045 <span class="sgr31">│</span>        0.00866538 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  15 <span class="sgr31">│</span> 0.979167 <span class="sgr31">│</span> 0.00559946 <span class="sgr31">│</span> 0.0470271 <span class="sgr31">│</span>   0.113906 <span class="sgr31">│</span>        0.00940542 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  ⋮  <span class="sgr31">│</span>    ⋮     <span class="sgr31">│</span>     ⋮      <span class="sgr31">│</span>     ⋮     <span class="sgr31">│</span>     ⋮      <span class="sgr31">│</span>         ⋮         <span class="sgr31">│</span>
+<span class="sgr31">╰─────┴──────────┴────────────┴───────────┴────────────┴───────────────────╯</span>
+<span class="sgr36">                                                            350 rows omitted</span>
+</code></pre><p>这些模型都作用于单个植株的简化模型，没有任何器官级的局部信息。因此我们可以认为它们都工作在“整株植物”这个尺度上。其变量同样都在 “Plant” 这一尺度下运行，因此不需要映射到其他尺度。</p><p>因此，我们可以将其转换为如下的映射关系：</p><pre><code class="language-julia hljs">mapping = Dict(
+&quot;Plant&quot; =&gt; (
+   ToyLAIModel(),
+    Beer(0.5),
+    ToyRUEGrowthModel(0.2),
+    Status(TT_cu=cumsum(meteo_day.TT),)
+    ),
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{String, Tuple{PlantSimEngine.Examples.ToyLAIModel, PlantSimEngine.Examples.Beer{Float64}, PlantSimEngine.Examples.ToyRUEGrowthModel{Float64}, Status{(:TT_cu,), Tuple{Base.RefValue{Vector{Float64}}}}}} with 1 entry:
+  &quot;Plant&quot; =&gt; (ToyLAIModel(8.0, 800, 110.0, 1500, 20.0), Beer{Float64}(0.5), Toy…</code></pre><p>注意，这里 <a href="../API/API_public.html#PlantSimEngine.Status"><code>Status</code></a> 的写法与之前略有不同。这是出于实现上的原因（请见谅）。</p><h2 id="为植物图形引入新的包"><a class="docs-heading-anchor" href="#为植物图形引入新的包">为植物图形引入新的包</a><a id="为植物图形引入新的包-1"></a><a class="docs-heading-anchor-permalink" href="#为植物图形引入新的包" title="Permalink"></a></h2><p>上述模型同样没有在多尺度树图（multi-scale tree graph, MTG）上运行，也不存在器官的创建或生长的概念。但要进行多尺度模拟，我们还是必须为模型提供一个多尺度树图。因此，我们可以暂时声明一个非常简单的 MTG，仅包含一个节点：</p><pre><code class="language-julia hljs">using MultiScaleTreeGraph
+
+mtg = MultiScaleTreeGraph.Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Plant&quot;, 0, 0),)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">/ 1: Plant
+</code></pre><div class="admonition is-info" id="Note-76c9d9e69ba7bff0"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-76c9d9e69ba7bff0" title="Permalink"></a></header><div class="admonition-body"><p>你需要将 <code>MultiScaleTreeGraph</code> 包添加到你的环境中。如果你对 Julia 还不熟悉或需要复习，请参见<a href="../prerequisites/installing_plantsimengine.html#PlantSimEngine-的安装与运行">PlantSimEngine 的安装与运行</a>。</p></div></div><h2 id="运行多尺度模拟？"><a class="docs-heading-anchor" href="#运行多尺度模拟？">运行多尺度模拟？</a><a id="运行多尺度模拟？-1"></a><a class="docs-heading-anchor-permalink" href="#运行多尺度模拟？" title="Permalink"></a></h2><p>到目前为止，我们已经准备好了进行多尺度模拟所需的<strong>几乎所有</strong>条件。</p><p>这一步的转换可以作为更复杂多尺度模拟的起点。</p><p>多尺度下 <a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a> 函数的签名与 ModelList 版本略有不同：</p><pre><code class="language-julia hljs">out_multiscale = run!(mtg, mapping, meteo_day)</code></pre><p>（一些可选参数的用法也会有所不同）</p><p>但需要注意的是，目前在多尺度模式下通过 <a href="../API/API_public.html#PlantSimEngine.Status"><code>Status</code></a> 字段传递向量依然可以实现，但需要对映射关系进行更深入的操作。这种机制实际上是动态生成了一个自定义模型，其实现还是实验性的，使用体验也不够友好。</p><p>如果你仍然希望了解这种方式，可参考<a href="../troubleshooting_and_testing/tips_and_workarounds.html#multiscale_vector">这里的详细示例</a>，但不推荐初学者这么做。</p><p>我们更推荐的做法，是编写你自己的模型，在每个时间步将积温（thermal time）作为变量输入，而不是用 <a href="../API/API_public.html#PlantSimEngine.Status"><code>Status</code></a> 直接传递一个整体向量。</p><p>这样，我们“伪多尺度”的初始方案就将转变为真正的多尺度模拟。</p><h2 id="添加第二个尺度"><a class="docs-heading-anchor" href="#添加第二个尺度">添加第二个尺度</a><a id="添加第二个尺度-1"></a><a class="docs-heading-anchor-permalink" href="#添加第二个尺度" title="Permalink"></a></h2><p>接下来，我们希望让一个模型为叶面积指数模型（Leaf Area Index Model）动态提供积温（Cumulated Thermal Time），而不是像之前那样通过 <a href="../API/API_public.html#PlantSimEngine.Status"><code>Status</code></a> 直接初始化。</p><p>因此，我们将实现自己的 <code>ToyTT_cuModel</code> 模型。</p><h3 id="TT_cu-模型的实现"><a class="docs-heading-anchor" href="#TT_cu-模型的实现">TT_cu 模型的实现</a><a id="TT_cu-模型的实现-1"></a><a class="docs-heading-anchor-permalink" href="#TT_cu-模型的实现" title="Permalink"></a></h3><p>这个模型不需要任何外部数据或输入变量，它只依赖气象数据来输出我们期望的 TT_cu（积温）。其实现十分直接，也不需要复杂的模型耦合。</p><pre><code class="language-julia hljs">PlantSimEngine.@process &quot;tt_cu&quot; verbose = false
+
+struct ToyTt_CuModel &lt;: AbstractTt_CuModel
+end
+
+function PlantSimEngine.run!(::ToyTt_CuModel, models, status, meteo, constants, extra=nothing)
+    status.TT_cu +=
+        meteo.TT
+end
+
+function PlantSimEngine.inputs_(::ToyTt_CuModel)
+    NamedTuple() # 没有任何输入变量
+end
+
+function PlantSimEngine.outputs_(::ToyTt_CuModel)
+    (TT_cu=0.0,)
+end</code></pre><div class="admonition is-info" id="Note-2af54718f2729007"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-2af54718f2729007" title="Permalink"></a></header><div class="admonition-body"><p>通过 status，在 <a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a> 函数内部能够访问到的变量仅限于本层级（如 &quot;Scene&quot; 尺度）下定义的变量。这一点初看并不明显，但在开发模型或者将其用于不同尺度时非常重要。如果你需要访问其它尺度的变量，则必须通过 <a href="../API/API_public.html#PlantSimEngine.MultiScaleModel"><code>MultiScaleModel</code></a> 进行变量映射，或者采用更复杂的耦合方式。</p></div></div><h3 id="将新的-TT_cu-模型关联到映射中的某个尺度"><a class="docs-heading-anchor" href="#将新的-TT_cu-模型关联到映射中的某个尺度">将新的 TT_cu 模型关联到映射中的某个尺度</a><a id="将新的-TT_cu-模型关联到映射中的某个尺度-1"></a><a class="docs-heading-anchor-permalink" href="#将新的-TT_cu-模型关联到映射中的某个尺度" title="Permalink"></a></h3><p>我们实现了自己的模型，接下来要在变量映射中将它加入。</p><p>这个新模型其实与植物的任何特定器官都没有直接关联。实际上，它描述的并非植物的生理过程，而是影响其生理状态的环境驱动力。因此，我们可以让它运行在与植物结构无关的另一层级，这里我们称为“Scene”（场景）层级。这也是常见的做法。</p><p>注意：我们现在需要在多尺度树图（MTG）中新增一个 &quot;Scene&quot; 节点，否则我们的模型不会被调用——因为没有其它模型会主动调用它，而 &quot;Plant&quot; 层级节点只会运行 &quot;Plant&quot; 层级下的模型。关于更多细节，参见 <a href="../troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html#多尺度模拟中的空状态向量">多尺度模拟中的空状态向量</a>。</p><pre><code class="language-julia hljs">mtg_multiscale = MultiScaleTreeGraph.Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Scene&quot;, 0, 0),)
+    plant = MultiScaleTreeGraph.Node(mtg_multiscale, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Plant&quot;, 1, 1))</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">+ 2: Plant
+</code></pre><h3 id="尺度间的变量映射：MultiScaleModel-包装器"><a class="docs-heading-anchor" href="#尺度间的变量映射：MultiScaleModel-包装器">尺度间的变量映射：MultiScaleModel 包装器</a><a id="尺度间的变量映射：MultiScaleModel-包装器-1"></a><a class="docs-heading-anchor-permalink" href="#尺度间的变量映射：MultiScaleModel-包装器" title="Permalink"></a></h3><p>先前我们是将积温（<code>:TT_cu</code>）作为一个模拟参数直接提供给 LAI 模型，但现在我们需要将其从“Scene”尺度映射过来。</p><p>这实现的方法是将我们的 ToyLAIModel 包装在 <a href="../API/API_public.html#PlantSimEngine.MultiScaleModel"><code>MultiScaleModel</code></a> 结构体中。 <a href="../API/API_public.html#PlantSimEngine.MultiScaleModel"><code>MultiScaleModel</code></a> 需要两个关键字参数：<code>model</code> ，指明我们要映射变量的模型本体；<code>mapped_variables</code> ，用于指定变量与尺度之间的映射关系，以及变量的重命名（如有需要）。</p><p>变量的映射方式有多种语法形式，但在本例中，我们只是将一个单变量（TT_cu 的单一数值）从 &quot;Scene&quot; 尺度传递到 &quot;Plant&quot; 尺度。</p><p>因此，我们为 LAI 模型用 <a href="../API/API_public.html#PlantSimEngine.MultiScaleModel"><code>MultiScaleModel</code></a> 包装的声明如下：</p><pre><code class="language-julia hljs">MultiScaleModel(
+    model=ToyLAIModel(),
+    mapped_variables=[
+        :TT_cu =&gt; &quot;Scene&quot;,
+    ],
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">MultiScaleModel{PlantSimEngine.Examples.ToyLAIModel, Vector{Pair{Union{Symbol, PreviousTimeStep}, Union{Pair{String, Symbol}, Vector{Pair{String, Symbol}}}}}}(PlantSimEngine.Examples.ToyLAIModel(8.0, 800, 110.0, 1500, 20.0), Pair{Union{Symbol, PreviousTimeStep}, Union{Pair{String, Symbol}, Vector{Pair{String, Symbol}}}}[:TT_cu =&gt; (&quot;Scene&quot; =&gt; :TT_cu)])</code></pre><p>而包含两个尺度的新变量映射如下：</p><pre><code class="language-julia hljs">mapping_multiscale = Dict(
+    &quot;Scene&quot; =&gt; ToyTt_CuModel(),
+    &quot;Plant&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyLAIModel(),
+            mapped_variables=[
+                :TT_cu =&gt; &quot;Scene&quot;,
+            ],
+        ),
+        Beer(0.5),
+        ToyRUEGrowthModel(0.2),
+    ),
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{String, Any} with 2 entries:
+  &quot;Scene&quot; =&gt; ToyTt_CuModel()
+  &quot;Plant&quot; =&gt; (MultiScaleModel{ToyLAIModel, Vector{Pair{Union{Symbol, PreviousTi…</code></pre><h3 id="运行多尺度模拟"><a class="docs-heading-anchor" href="#运行多尺度模拟">运行多尺度模拟</a><a id="运行多尺度模拟-1"></a><a class="docs-heading-anchor-permalink" href="#运行多尺度模拟" title="Permalink"></a></h3><p>在构建好拥有两个节点的 MTG 后，我们就可以运行多尺度模拟了：</p><pre><code class="language-julia hljs">outputs_multiscale = run!(mtg_multiscale, mapping_multiscale, meteo_day)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{String, Vector} with 2 entries:
+  &quot;Scene&quot; =&gt; Status{(:timestep, :node, :TT_cu), Tuple{RefValue{Int64}, RefValue…
+  &quot;Plant&quot; =&gt; Status{(:timestep, :node, :TT_cu, :biomass_increment, :aPPFD, :LAI…</code></pre><h3 id="单尺度与多尺度输出的对比"><a class="docs-heading-anchor" href="#单尺度与多尺度输出的对比">单尺度与多尺度输出的对比</a><a id="单尺度与多尺度输出的对比-1"></a><a class="docs-heading-anchor-permalink" href="#单尺度与多尺度输出的对比" title="Permalink"></a></h3><p>输出的数据结构略有不同：多尺度输出是按照尺度进行索引的，并且每个变量对其所在尺度的每个节点都有一个对应的数值（例如，对于每一片叶子都会有一个 &quot;leaf_surface&quot; 的值），这些值以数组形式存储。</p><p>在我们这个简单的例子中，只有一个 MTG 场景节点和一个植株节点，因此每个变量在多尺度输出中的数组都只包含一个数值。</p><p>我们可以通过索引多尺度输出，访问 &quot;Scene&quot; 尺度下的输出变量：</p><pre><code class="language-julia hljs">outputs_multiscale[&quot;Scene&quot;]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">365-element Vector{Status{(:timestep, :node, :TT_cu), Tuple{Base.RefValue{Int64}, Base.RefValue{MultiScaleTreeGraph.Node{MultiScaleTreeGraph.NodeMTG, Dict{Symbol, Any}}}, Base.RefValue{Float64}}}}:
+ Status(timestep = 1, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 2, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 3, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 4, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 5, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 6, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 7, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 8, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 9, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ Status(timestep = 10, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 0.0)
+ ⋮
+ Status(timestep = 357, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2177.904166666665)
+ Status(timestep = 358, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2178.4249999999984)
+ Status(timestep = 359, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2179.729166666665)
+ Status(timestep = 360, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2180.4749999999985)
+ Status(timestep = 361, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2181.1458333333317)
+ Status(timestep = 362, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2183.941666666665)
+ Status(timestep = 363, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2189.2666666666646)
+ Status(timestep = 364, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2192.895833333331)
+ Status(timestep = 365, node = / 1: Scene
+└─ + 2: Plant
+, TT_cu = 2193.8166666666643)</code></pre><p>这里得到的是一个 <code>Vector{NamedTuple}</code> 结构。而对应的单尺度输出则是一个 <code>Vector{T}</code>：</p><pre><code class="language-julia hljs">outputs_singlescale.TT_cu</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">365-element Vector{Float64}:
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    ⋮
+ 2177.9041666666662
+ 2178.4249999999997
+ 2179.729166666666
+ 2180.4749999999995
+ 2181.145833333333
+ 2183.941666666666
+ 2189.2666666666664
+ 2192.895833333333
+ 2193.816666666666</code></pre><p>让我们提取多尺度的 <code>:TT_cu</code>：</p><pre><code class="language-julia hljs">computed_TT_cu_multiscale = [outputs_multiscale[&quot;Scene&quot;][i].TT_cu for i in 1:length(outputs_multiscale[&quot;Scene&quot;])]</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">365-element Vector{Float64}:
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    0.0
+    ⋮
+ 2177.904166666665
+ 2178.4249999999984
+ 2179.729166666665
+ 2180.4749999999985
+ 2181.1458333333317
+ 2183.941666666665
+ 2189.2666666666646
+ 2192.895833333331
+ 2193.8166666666643</code></pre><p>现在我们可以一一对比它们的值，并做近似相等的判断：</p><pre><code class="language-julia hljs">for i in 1:length(computed_TT_cu_multiscale)
+    if !(computed_TT_cu_multiscale[i] ≈ outputs_singlescale.TT_cu[i])
+        println(i)
+    end
+end</code></pre><p>或者，也可以用广播操作实现同样的比较：</p><pre><code class="language-julia hljs">is_approx_equal = length(unique(computed_TT_cu_multiscale .≈ outputs_singlescale.TT_cu)) == 1</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">true</code></pre><div class="admonition is-info" id="Note-9e4a1fbf1d9107cb"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-9e4a1fbf1d9107cb" title="Permalink"></a></header><div class="admonition-body"><p>你可能会疑惑为什么我们要用近似相等判断而不是严格相等。原因是浮点数累积误差造成的，这一问题在<a href="../working_with_data/floating_point_accumulation_error.html#浮点数注意事项">浮点数注意事项</a>中有更详细的讨论。</p></div></div><h2 id="ToyDegreeDaysCumulModel"><a class="docs-heading-anchor" href="#ToyDegreeDaysCumulModel">ToyDegreeDaysCumulModel</a><a id="ToyDegreeDaysCumulModel-1"></a><a class="docs-heading-anchor-permalink" href="#ToyDegreeDaysCumulModel" title="Permalink"></a></h2><p>有一个模型 <a href="single_to_multiscale.html#ToyDegreeDaysCumulModel"><code>ToyDegreeDaysCumulModel</code></a> 可以根据气温数据生成积温，该模型可以在 examples 文件夹中找到。</p><p>本例中我们没有使用它，是为了教学的简单性。此外，该模型用默认参数计算得到的积温，与本例天气数据中给出的积温并不一致，因此如果不调整参数，计算结果也会不同。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="multiscale_considerations.html">« 多尺度建模考量</a><a class="docs-footer-nextpage" href="multiscale.html">更多变量映射示例 »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Saturday 10 January 2026 19:41">Saturday 10 January 2026</span>. Using Julia version 1.12.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

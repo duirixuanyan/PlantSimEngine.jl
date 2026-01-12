@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>故障排查 · PlantSimEngine.jl</title><meta name="title" content="故障排查 · PlantSimEngine.jl"/><meta property="og:title" content="故障排查 · PlantSimEngine.jl"/><meta property="twitter:title" content="故障排查 · PlantSimEngine.jl"/><meta name="description" content="Documentation for PlantSimEngine.jl."/><meta property="og:description" content="Documentation for PlantSimEngine.jl."/><meta property="twitter:description" content="Documentation for PlantSimEngine.jl."/><meta property="og:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/troubleshooting_and_testing\\plantsimengine_and_julia_troubleshooting.html"/><meta property="twitter:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/troubleshooting_and_testing\\plantsimengine_and_julia_troubleshooting.html"/><link rel="canonical" href="https://VirtualPlantLab.github.io/PlantSimEngine.jl/troubleshooting_and_testing\\plantsimengine_and_julia_troubleshooting.html"/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../index.html">PlantSimEngine.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">首页</a></li><li><span class="tocitem">简介</span><ul><li><a class="tocitem" href="../introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？</a></li><li><a class="tocitem" href="../introduction/why_julia.html">为什么选择 Julia？</a></li></ul></li><li><span class="tocitem">前置条件</span><ul><li><a class="tocitem" href="../prerequisites/installing_plantsimengine.html">PlantSimEngine 的安装与运行</a></li><li><a class="tocitem" href="../prerequisites/key_concepts.html">关键概念</a></li><li><a class="tocitem" href="../prerequisites/julia_basics.html">Julia 语言基础</a></li></ul></li><li><span class="tocitem">分步教程 - 单尺度模拟</span><ul><li><a class="tocitem" href="../step_by_step/detailed_first_example.html">详细的第一个模拟</a></li><li><a class="tocitem" href="../step_by_step/simple_model_coupling.html">模型耦合</a></li><li><a class="tocitem" href="../step_by_step/model_switching.html">模型切换</a></li><li><a class="tocitem" href="../step_by_step/quick_and_dirty_examples.html">快速示例</a></li><li><a class="tocitem" href="../step_by_step/implement_a_process.html">实现一个过程</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model.html">实现一个模型</a></li><li><a class="tocitem" href="../step_by_step/parallelization.html">并行化</a></li><li><a class="tocitem" href="../step_by_step/advanced_coupling.html">高级耦合与硬依赖</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model_additional.html">实现一个模型：补充说明</a></li></ul></li><li><a class="tocitem" href="../model_execution.html">模型执行</a></li><li><span class="tocitem">数据处理</span><ul><li><a class="tocitem" href="../working_with_data/reducing_dof.html">降低自由度</a></li><li><a class="tocitem" href="../working_with_data/fitting.html">拟合</a></li><li><a class="tocitem" href="../working_with_data/inputs.html">输入类型</a></li><li><a class="tocitem" href="../working_with_data/visualising_outputs.html">可视化输出与数据</a></li><li><a class="tocitem" href="../working_with_data/floating_point_accumulation_error.html">浮点运算注意事项</a></li></ul></li><li><span class="tocitem">多尺度建模</span><ul><li><a class="tocitem" href="../multiscale/multiscale_considerations.html">多尺度建模考量</a></li><li><a class="tocitem" href="../multiscale/single_to_multiscale.html">单尺度模型转换为多尺度</a></li><li><a class="tocitem" href="../multiscale/multiscale.html">更多变量映射示例</a></li><li><a class="tocitem" href="../multiscale/multiscale_cyclic.html">循环依赖的处理</a></li><li><a class="tocitem" href="../multiscale/multiscale_coupling.html">多尺度耦合相关说明</a></li><li><input class="collapse-toggle" id="menuitem-7-6" type="checkbox"/><label class="tocitem" for="menuitem-7-6"><span class="docs-label">构建简单植株</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../multiscale/multiscale_example_1.html">简单植株模拟</a></li><li><a class="tocitem" href="../multiscale/multiscale_example_2.html">拓展植株模拟</a></li><li><a class="tocitem" href="../multiscale/multiscale_example_3.html">修复植株模拟中的错误</a></li></ul></li><li><a class="tocitem" href="../multiscale/multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></li><li><span class="tocitem">故障排查与测试</span><ul><li class="is-active"><a class="tocitem" href="plantsimengine_and_julia_troubleshooting.html">故障排查</a><ul class="internal"><li><a class="tocitem" href="#排查技巧与工作流"><span>排查技巧与工作流</span></a></li><li><a class="tocitem" href="#常见的-Julia-错误"><span>常见的 Julia 错误</span></a></li><li><a class="tocitem" href="#PlantSimEngine-用户常见错误"><span>PlantSimEngine 用户常见错误</span></a></li><li><a class="tocitem" href="#在-mapping-中忘记声明某个尺度，但变量却指向了该尺度"><span>在 mapping 中忘记声明某个尺度，但变量却指向了该尺度</span></a></li></ul></li><li><a class="tocitem" href="downstream_tests.html">自动化测试</a></li><li><a class="tocitem" href="tips_and_workarounds.html">技巧与常见问题</a></li><li><a class="tocitem" href="implicit_contracts.html">隐性约定</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../API/API_public.html">公共 API</a></li><li><a class="tocitem" href="../API/API_examples.html">示例模型</a></li><li><a class="tocitem" href="../API/API_private.html">内部 API</a></li></ul></li><li><a class="tocitem" href="../documentation_improvement.html">改进文档</a></li><li><a class="tocitem" href="../developers.html">开发者指南</a></li><li><a class="tocitem" href="../planned_features.html">规划功能</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">故障排查与测试</a></li><li class="is-active"><a href="plantsimengine_and_julia_troubleshooting.html">故障排查</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="plantsimengine_and_julia_troubleshooting.html">故障排查</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/docs - 中文/src/troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="错误信息排查指南"><a class="docs-heading-anchor" href="#错误信息排查指南">错误信息排查指南</a><a id="错误信息排查指南-1"></a><a class="docs-heading-anchor-permalink" href="#错误信息排查指南" title="Permalink"></a></h1><p>PlantSimEngine 致力于为用户提供尽可能舒适和易用的体验，许多用户错误都会被捕获并给出相应的解释以帮助解决问题，但仍然存在一些盲点，以及语法错误，这些通常会生成 Julia 的错误（这类错误有时不易理解）而不是 PlantSimEngine 的专有错误。</p><p>为帮助 Julia 新手排查问题，以下列出了一些在当前 API 下容易出现且不易解读的常见错误类型，并给出了修复建议。</p><p>这些错误是按“错误性质”而不是错误提示信息分类的，因此你可能需要在本页面搜索才能找到具体的错误。</p><p>如果你需要进一步帮助以解读 Julia 错误信息，可以访问 <a href="https://discourse.julialang.org">Julia 论坛</a> 寻求帮助。 如果你需要 FSPM（功能-结构植物模型） 方面的建议，研究社区有<a href="https://fspm.discourse.group">专属的讨论论坛</a>。</p><p>如果你遇到 PlantSimEngine 相关的问题，或者有建模方面的疑问和建议，也可以在 Github 上<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/issues">提交 issue</a>。</p><ul><li><a href="plantsimengine_and_julia_troubleshooting.html#错误信息排查指南">错误信息排查指南</a></li><li class="no-marker"><ul><li><a href="plantsimengine_and_julia_troubleshooting.html#排查技巧与工作流">排查技巧与工作流</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#常见的-Julia-错误">常见的 Julia 错误</a></li><li class="no-marker"><ul><li><a href="plantsimengine_and_julia_troubleshooting.html#单元素-NamedTuple-必须带逗号：">单元素 NamedTuple 必须带逗号：</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#空-inputs/outputs-声明错误">空 inputs/outputs 声明错误</a></li></ul></li><li><a href="plantsimengine_and_julia_troubleshooting.html#PlantSimEngine-用户常见错误">PlantSimEngine 用户常见错误</a></li><li class="no-marker"><ul><li><a href="plantsimengine_and_julia_troubleshooting.html#ModelList/Mapping：错误地提供了类型名而不是实例">ModelList/Mapping：错误地提供了类型名而不是实例</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#实现新模型时：忘记导入函数或加上模块前缀">实现新模型时：忘记导入函数或加上模块前缀</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#MultiScaleModel：声明时遗漏关键字参数">MultiScaleModel：声明时遗漏关键字参数</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#MultiScaleModel：在映射中未定义变量">MultiScaleModel：在映射中未定义变量</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#调用-run!-时位置参数与关键字参数问题">调用 run! 时位置参数与关键字参数问题</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#映射中缺少硬依赖过程的情况">映射中缺少硬依赖过程的情况</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#Status-API-歧义问题">Status API 歧义问题</a></li></ul></li><li><a href="plantsimengine_and_julia_troubleshooting.html#在-mapping-中忘记声明某个尺度，但变量却指向了该尺度">在 mapping 中忘记声明某个尺度，但变量却指向了该尺度</a></li><li class="no-marker"><ul><li><a href="plantsimengine_and_julia_troubleshooting.html#mapping-声明时的括号位置问题">mapping 声明时的括号位置问题</a></li><li><a href="plantsimengine_and_julia_troubleshooting.html#多尺度模拟中的空状态向量">多尺度模拟中的空状态向量</a></li></ul></li></ul></li></ul><h2 id="排查技巧与工作流"><a class="docs-heading-anchor" href="#排查技巧与工作流">排查技巧与工作流</a><a id="排查技巧与工作流-1"></a><a class="docs-heading-anchor-permalink" href="#排查技巧与工作流" title="Permalink"></a></h2><p>有些错误的原因非常明确，PlantSimEngine 的错误信息通常会直接指出是哪一个参数/变量/器官导致了错误，方便你定位问题。</p><p>有些看似泛泛的错误消息，实际包含了有助于调试的重要线索。例如，由于参数或关键字参数存在问题导致 run! 调度失败时，错误提示往往会明确指出当前冲突的参数。在 VSCode 编辑器中，这些参数会被红色高亮显示（例如下面例子中第一个和最后一个参数）：</p><pre><code class="language-julia hljs">a = 1
+run!(a, simple_mtg, mapping, meteo_day, a)
+
+ERROR: MethodError: no method matching run!(::Int64, ::Node{NodeMTG, Dict{…}}, ::Dict{String, Tuple{…}}, ::DataFrame, ::Int64)
+The function [`run!`](@ref) exists, but no method is defined for this combination of argument types.
+
+Closest candidates are:
+  run!(::ToyPlantLeafSurfaceModel, ::Any, ::Any, ::Any, ::Any, ::Any)
+   @ PlantSimEngine /PlantSimEngine/examples/ToyLeafSurfaceModel.jl:75
+   ...</code></pre><p>如果你想在本页快速定位某个错误，请复制错误描述中不特定于你脚本的部分，然后在此页面使用 Ctrl+F 搜索。例如上述例子中的泛用搜索词为：</p><pre><code class="language-julia hljs">ERROR: MethodError: no method matching</code></pre><h2 id="常见的-Julia-错误"><a class="docs-heading-anchor" href="#常见的-Julia-错误">常见的 Julia 错误</a><a id="常见的-Julia-错误-1"></a><a class="docs-heading-anchor-permalink" href="#常见的-Julia-错误" title="Permalink"></a></h2><h3 id="单元素-NamedTuple-必须带逗号："><a class="docs-heading-anchor" href="#单元素-NamedTuple-必须带逗号：">单元素 NamedTuple 必须带逗号：</a><a id="单元素-NamedTuple-必须带逗号：-1"></a><a class="docs-heading-anchor-permalink" href="#单元素-NamedTuple-必须带逗号：" title="Permalink"></a></h3><p>这一点很容易被忽略。</p><p>空的 NamedTuple 对象可以用 x = NamedTuple() 初始化。有多个变量时可以这样初始化：</p><pre><code class="language-julia hljs">a = (var1 = 0, var2 = 0)</code></pre><p>或者这样写也是可以的：</p><pre><code class="language-julia hljs">a = (var1 = 0, var2 = 0,)</code></pre><p>第二个逗号是可选的。</p><p>然而，如果只有一个变量，则必须这样写：</p><pre><code class="language-julia hljs">a = (var1 = 0,)</code></pre><p>这个逗号是必须的。如果省略了逗号：</p><pre><code class="language-julia hljs">a = (var1 = 0)</code></pre><p>此时这行代码会被理解为将变量 a 赋值为 var1 的值（如上即赋为 0），所以 a 会变成 Int64 类型的 0，而不是 NamedTuple。</p><p>这在编写自定义模型时很容易出错，因为某些函数需要 NamedTuple 类型的参数。例如：</p><pre><code class="language-julia hljs">function PlantSimEngine.inputs_(::HardDepSameScaleAvalModel)
+    (e2 = -Inf,)
+end</code></pre><p>如果写错，通常会看到类似下面的 Julia 错误信息：</p><pre><code class="language-julia hljs">[ERROR: MethodError: no method matching merge(::Float64, ::@NamedTuple{g::Float64})
+
+候选方法有：
+merge(::NamedTuple{()}, ::NamedTuple)
+@ Base namedtuple.jl:337
+merge(::NamedTuple{an}, ::NamedTuple{bn}) where {an, bn}
+@ Base namedtuple.jl:324
+merge(::NamedTuple, ::NamedTuple, NamedTuple...)
+@ Base namedtuple.jl:343
+
+Stacktrace:
+[1] variables_multiscale(node::PlantSimEngine.HardDependencyNode{…}, organ::String, vars_mapping::Dict{…}, st::@NamedTuple{})
+...</code></pre><p>有时 PlantSimEngine 能检测到并给出友好的提示（如传入 tracked_outputs 时），但在定义状态量等场合此类错误也可能出现。</p><h3 id="空-inputs/outputs-声明错误"><a class="docs-heading-anchor" href="#空-inputs/outputs-声明错误">空 inputs/outputs 声明错误</a><a id="空-inputs/outputs-声明错误-1"></a><a class="docs-heading-anchor-permalink" href="#空-inputs/outputs-声明错误" title="Permalink"></a></h3><p>空 NamedTuple 的写法是 <code>NamedTuple()</code>。如果错误地写成 <code>()</code> 或 <code>(,)</code>，将分别触发 PlantSimEngine 或 Julia 返回的错误提示。</p><h2 id="PlantSimEngine-用户常见错误"><a class="docs-heading-anchor" href="#PlantSimEngine-用户常见错误">PlantSimEngine 用户常见错误</a><a id="PlantSimEngine-用户常见错误-1"></a><a class="docs-heading-anchor-permalink" href="#PlantSimEngine-用户常见错误" title="Permalink"></a></h2><p>以下大多数错误仅在多尺度模拟（multi-scale simulation）时出现，因为其 API 更为复杂。但也有一些是单尺度和多尺度模拟都可能遇到的。</p><h3 id="ModelList/Mapping：错误地提供了类型名而不是实例"><a class="docs-heading-anchor" href="#ModelList/Mapping：错误地提供了类型名而不是实例">ModelList/Mapping：错误地提供了类型名而不是实例</a><a id="ModelList/Mapping：错误地提供了类型名而不是实例-1"></a><a class="docs-heading-anchor-permalink" href="#ModelList/Mapping：错误地提供了类型名而不是实例" title="Permalink"></a></h3><pre><code class="language-julia hljs">m = ModelList(day=MyToyModel, week=MyToyModel2)</code></pre><p>这行代码是错误的，会报如下错误：</p><pre><code class="language-julia hljs">MethodError: no method matching inputs_(::Type{MyToyDayModel})</code></pre><p>正确的写法（假设相应的构造函数存在）是：</p><pre><code class="language-julia hljs">m = ModelList(day=MyToyModel(), week=MyToyModel2())</code></pre><h3 id="实现新模型时：忘记导入函数或加上模块前缀"><a class="docs-heading-anchor" href="#实现新模型时：忘记导入函数或加上模块前缀">实现新模型时：忘记导入函数或加上模块前缀</a><a id="实现新模型时：忘记导入函数或加上模块前缀-1"></a><a class="docs-heading-anchor-permalink" href="#实现新模型时：忘记导入函数或加上模块前缀" title="Permalink"></a></h3><p>在实现新模型时，需要确保你的实现被正确识别为扩展了<code>PlantSimEngine</code>的方法和类型，而不是在当前作用域新建的独立函数。</p><p>在下面这个可运行的玩具模型实例中，注意<code>inputs_</code>、<code>outputs_</code>和<a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a>函数都以模块名作前缀。如果有硬依赖管理，<a href="../API/API_public.html#PlantSimEngine.dep"><code>dep</code></a>函数同样需要加模块名前缀。</p><pre><code class="language-julia hljs">using PlantSimEngine
+@process &quot;toy&quot; verbose = false
+
+struct ToyToyModel{T} &lt;: AbstractToyModel 
+    internal_constant::T
+end
+
+function PlantSimEngine.inputs_(::ToyToyModel)
+    (a = -Inf, b = -Inf, c = -Inf)
+end
+
+function PlantSimEngine.outputs_(::ToyToyModel)
+    (d = -Inf, e = -Inf)
+end
+
+function PlantSimEngine.run!(m::ToyToyModel, models, status, meteo, constants=nothing, extra_args=nothing)
+    status.d = m.internal_constant * status.a 
+    status.e += m.internal_constant
+end
+
+meteo = Weather([
+        Atmosphere(T=20.0, Wind=1.0, Rh=0.65, Ri_PAR_f=200.0),
+        Atmosphere(T=20.0, Wind=1.0, Rh=0.65, Ri_PAR_f=200.0),
+        Atmosphere(T=18.0, Wind=1.0, Rh=0.65, Ri_PAR_f=100.0),
+])
+
+model = ModelList(
+    ToyToyModel(1),
+    status = ( a = 1, b = 0, c = 0),
+)
+to_initialize(model) 
+sim = PlantSimEngine.run!(model, meteo)</code></pre><p>如果在声明这些函数时没有先导入，或没有加上模块名前缀，它们会被认为是当前作用域下的新函数，而不是扩展<code>PlantSimEngine</code>的方法。这会导致<code>PlantSimEngine</code>无法正确调用这些功能，结果通常会报错或行为异常。</p><p>比如忘记给<a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a>函数加模块前缀，会收到如下错误：</p><pre><code class="language-julia hljs">ERROR: MethodError: no method matching run!(::ModelList{@NamedTuple{…}, Status{…}}, ::TimeStepTable{Atmosphere{…}})
+函数[`run!`](@ref)虽存在，但没有适用于这组参数类型的方法。
+
+最接近的方法候选有:
+  run!(::ToyToyModel, ::Any, ::Any, ::Any, ::Any, ::Any)
+   @ Main ~/path/to/file.jl:20</code></pre><p>如果<code>inputs_</code>或<code>outputs_</code>没有加前缀，有时未必立刻出错（取决于你在ModelList或mapping的Status下是否声明了对应变量）。</p><p>某些情况下会报如下类错误：</p><pre><code class="language-julia hljs">ERROR: type NamedTuple has no field d
+Stacktrace:
+ [1] setproperty!(mnt::Status{(:a, :b, :c), Tuple{…}}, s::Symbol, x::Int64)
+   @ PlantSimEngine ~/path/to/package/PlantSimEngine/src/component_models/Status.jl:100
+ [2] run!(m::ToyToyModel{…}, models::@NamedTuple{…}, status::Status{…}, meteo::PlantMeteo.TimeStepRow{…}, constants::Constants{…}, extra_args::Nothing)
+ ...</code></pre><div class="admonition is-info" id="Note-29ccdc1cad7d60d7"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-29ccdc1cad7d60d7" title="Permalink"></a></header><div class="admonition-body"><p>未来我们或许会在库内部做更多改进以让错误更直接易懂，但目前最佳实践仍然是所有需要声明和调用的相关方法都加上<code>PlantSimEngine.</code>前缀，或明确导入你希望扩展的方法，例如：<code>import PlantSimEngine: inputs_, outputs_</code>。</p></div></div><h3 id="MultiScaleModel：声明时遗漏关键字参数"><a class="docs-heading-anchor" href="#MultiScaleModel：声明时遗漏关键字参数">MultiScaleModel：声明时遗漏关键字参数</a><a id="MultiScaleModel：声明时遗漏关键字参数-1"></a><a class="docs-heading-anchor-permalink" href="#MultiScaleModel：声明时遗漏关键字参数" title="Permalink"></a></h3><p>MultiScaleModel 需要两个关键字参数，分别为 <code>model</code> 和 <code>mapped_variables</code>：</p><pre><code class="language-julia hljs">models = MultiScaleModel(
+        model=ToyLAIModel(),
+        mapped_variables=[:TT_cu =&gt; &quot;Scene&quot;,],
+    )</code></pre><p>忘记写 <code>model=</code> 的情况：</p><pre><code class="language-julia hljs">models = MultiScaleModel(
+        ToyLAIModel(),
+        mapped_variables=[:TT_cu =&gt; &quot;Scene&quot;,],
+    )
+ERROR: MethodError: no method matching MultiScaleModel(::ToyLAIModel; mapped_variables::Vector{Pair{Symbol, String}})
+虽然类型 `MultiScaleModel` 存在，但该参数组合未定义对应的构造方法。
+
+最接近的候选方法有：
+    MultiScaleModel(::T, ::Any) where T&lt;:AbstractModel got unsupported keyword argument &quot;mapped_variables&quot;
+    @ PlantSimEngine PlantSimEngine/src/mtg/MultiScaleModel.jl:188
+    MultiScaleModel(; model, mapped_variables)
+    @ PlantSimEngine PlantSimEngine/src/mtg/MultiScaleModel.jl:191</code></pre><p>忘记写 <code>mapped_variables=</code> 的情况：</p><pre><code class="language-julia hljs">models = MultiScaleModel(
+        model=ToyLAIModel(),
+        [:TT_cu =&gt; &quot;Scene&quot;,],
+    )
+
+ERROR: MethodError: no method matching MultiScaleModel(::Vector{Pair{Symbol, String}}; model::ToyLAIModel)
+虽然类型 `MultiScaleModel` 存在，但该参数组合未定义对应的构造方法。
+
+最接近的候选方法有：
+  MultiScaleModel(; model, mapping)
+   @ PlantSimEngine PlantSimEngine/src/mtg/MultiScaleModel.jl:191
+  MultiScaleModel(::T, ::Any) where T&lt;:AbstractModel got unsupported keyword argument &quot;model&quot;</code></pre><p>信息&#39;got unsupported keyword argument &quot;model&quot;&#39;可能会产生误导，因为此处的错误并非关键字参数<em>不被支持</em>，而是关键字参数<em>缺失</em>。</p><h3 id="MultiScaleModel：在映射中未定义变量"><a class="docs-heading-anchor" href="#MultiScaleModel：在映射中未定义变量">MultiScaleModel：在映射中未定义变量</a><a id="MultiScaleModel：在映射中未定义变量-1"></a><a class="docs-heading-anchor-permalink" href="#MultiScaleModel：在映射中未定义变量" title="Permalink"></a></h3><p>导致此类错误的一个常见原因是，在多尺度模型的映射中，使用了变量名而不是符号（Symbol）：</p><pre><code class="language-julia hljs">mapping = Dict(&quot;Scale&quot; =&gt;
+MultiScaleModel(
+    model = ToyModel(),
+    mapped_variables = [should_be_symbol =&gt; &quot;Other_Scale&quot;] # should_be_symbol 是变量名，很可能在当前模块中未定义
+),
+...
+),</code></pre><p>正确的做法是使用符号（Symbol），例如：</p><pre><code class="language-julia hljs">mapping = Dict(&quot;Scale&quot; =&gt;
+MultiScaleModel(
+    model = ToyModel(),
+    mapped_variables=[:should_be_symbol =&gt; &quot;Other_Scale&quot;] # should_be_symbol 现在是符号
+),
+...
+),</code></pre><h3 id="调用-run!-时位置参数与关键字参数问题"><a class="docs-heading-anchor" href="#调用-run!-时位置参数与关键字参数问题">调用 run! 时位置参数与关键字参数问题</a><a id="调用-run!-时位置参数与关键字参数问题-1"></a><a class="docs-heading-anchor-permalink" href="#调用-run!-时位置参数与关键字参数问题" title="Permalink"></a></h3><p>不幸的是，给 run! 函数传递参数时有多种方式可能会混淆 Julia 的动态分派机制。其中一部分原因是 PlantSimEngine 本身类型声明还不够完善，未来可能会有所改进。</p><p>下面举几个典型例子，说明在正常多尺度模型的 run! 调用中稍作修改就容易引发困惑：</p><pre><code class="language-julia hljs">    meteo_day = CSV.read(joinpath(pkgdir(PlantSimEngine), &quot;examples/meteo_day.csv&quot;), DataFrame, header=18)
+    mtg = Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Plant&quot;, 1, 1))
+    var1 = 15.0
+
+    mapping = Dict(
+        &quot;Leaf&quot; =&gt; (
+            Process1Model(1.0),
+            Process2Model(),
+            Process3Model(),
+            Status(var1=var1,)
+        )
+    )
+
+    outs = Dict(
+        &quot;Leaf&quot; =&gt; (:var1,), # :non_existing_variable 不是任何模型计算的变量
+    )
+
+run!(mtg, mapping, meteo_day, PlantMeteo.Constants(), tracked_outputs=outs)</code></pre><p>该函数的完整签名如下： </p><pre><code class="language-julia hljs">function run!(
+    object::MultiScaleTreeGraph.Node,
+    mapping::Dict{String,T} where {T},
+    meteo=nothing,
+    constants=PlantMeteo.Constants(),
+    extra=nothing;
+    nsteps=nothing,
+    tracked_outputs=nothing,
+    check=true,
+    executor=ThreadedEx()</code></pre><p>在 mtg 和 mapping 之后的参数都有默认值，因此都是可选的；在 &#39;;&#39; 分隔符之后的参数是关键字参数，必须显式命名。</p><p>如果你忘记传入 mtg，由于 run! 的定义方式存在缺陷，会出现如下错误：</p><pre><code class="language-julia hljs">run!(mapping, meteo_day, PlantMeteo.Constants(), tracked_outputs=outs)
+
+ERROR: MethodError: no method matching check_dimensions(::PlantSimEngine.TableAlike, ::Tuple{…}, ::DataFrame)
+虽然函数 `check_dimensions` 存在，但没有针对这些参数类型的实现。
+
+最接近的候选方法如下：
+  check_dimensions(::Any, ::Any)
+   @ PlantSimEngine PlantSimEngine/src/checks/dimensions.jl:43
+ ...</code></pre><p>如果在函数调用时忘记添加必要的参数名 <code>tracked_outputs=</code>，<code>outs</code> 会被当作位置参数传递给 <code>extra</code>，而不是作为关键字参数。<code>extra</code> 参数一般默认为 nothing，并在多尺度模式下保留，因此会导致如下报错：</p><pre><code class="language-julia hljs">run!(mtg, mapping, meteo_day, PlantMeteo.Constants(), outs)
+
+ERROR: Extra parameters are not allowed for the simulation of an MTG (already used for statuses).
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:35
+ [2] run!(::PlantSimEngine.TreeAlike, object::PlantSimEngine.GraphSimulation{…}, meteo::DataFrames.DataFrameRows{…}, constants::Constants{…}, extra::Dict{…}; tracked_outputs::Nothing, check::Bool, executor::ThreadedEx{…})</code></pre><p>另外一种情况：如果错用了不存在的关键字参数，则 Julia 会抛出带有更多信息的通用调度错误，例如出现 <code>got unsupported keyword argument &quot;constants&quot;</code></p><pre><code class="language-julia hljs">run!(mtg, mapping, meteo_day, constants=PlantMeteo.Constants(), tracked_outputs=outs)
+
+ERROR: MethodError: no method matching run!(::Node{…}, ::Dict{…}, ::DataFrame, ::Dict{…}, ::Nothing; constants::Constants{…})
+这个错误是手动显式抛出的，因此函数本身可能存在，但被明确标记为未实现。
+
+最接近的候选方法如下：
+  run!(::Node, ::Dict{String}, ::Any, ::Any, ::Any; nsteps, tracked_outputs, check, executor) got unsupported keyword argument &quot;constants&quot;</code></pre><h3 id="映射中缺少硬依赖过程的情况"><a class="docs-heading-anchor" href="#映射中缺少硬依赖过程的情况">映射中缺少硬依赖过程的情况</a><a id="映射中缺少硬依赖过程的情况-1"></a><a class="docs-heading-anchor-permalink" href="#映射中缺少硬依赖过程的情况" title="Permalink"></a></h3><p>当前 PlantSimEngine 的错误检查机制存在一个不足：当你的 mapping 中包含模型 A，且 A 存在<strong>硬依赖</strong>模型 B（即 A 运行前必须有 B），但 mapping 里却没有添加 B，这时 Julia 会抛出一个比较隐晦的报错。</p><p>例如，A 是 <code>Process3Model</code>，它声明自己硬依赖一个名为 <code>process2</code> 的模型 B（实现自 <code>Process2Model</code>）。在 <code>Process3Model</code> 的源码中声明如下：</p><pre><code class="language-julia hljs">PlantSimEngine.dep(::Process3Model) = (process2=Process2Model,)</code></pre><p>但下方的示例 mapping 中，缺少了对应的 <code>Process2Model</code>：</p><pre><code class="language-julia hljs">simple_mtg = Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Plant&quot;, 1, 1))    
+mapping = Dict(
+    &quot;Leaf&quot; =&gt; (
+        Process3Model(),
+        Status(var5=15.0,)
+    )
+)
+outs = Dict(
+    &quot;Leaf&quot; =&gt; (:var5,),
+)
+run!(simple_mtg, mapping, meteo_day, tracked_outputs=outs)
+
+ERROR: type NamedTuple has no field process2
+Stacktrace:
+ [1] getproperty(x::@NamedTuple{process3::Process3Model}, f::Symbol)
+   @ Base ./Base.jl:49
+ [2] run!(::Process3Model, models::@NamedTuple{…}, status::Status{…}, meteo::DataFrameRow{…}, constants::Constants{…}, extra::PlantSimEngine.GraphSimulation{…})
+ ...</code></pre><p>出现这种报错时，<strong>解决方法</strong>就是在 mapping 里补上 <code>Process2Model()</code>（或者其它实现该过程的模型）。</p><h3 id="Status-API-歧义问题"><a class="docs-heading-anchor" href="#Status-API-歧义问题">Status API 歧义问题</a><a id="Status-API-歧义问题-1"></a><a class="docs-heading-anchor-permalink" href="#Status-API-歧义问题" title="Permalink"></a></h3><p>目前 PlantSimEngine 的 API 存在一个问题：在声明仿真的 Status 或 Statuses 时，单尺度与多尺度的写法不同。</p><p>回到<a href="plantsimengine_and_julia_troubleshooting.html#实现新模型时：忘记导入函数或加上模块前缀">实现新模型时：忘记导入函数或加上模块前缀</a>中的例子，<code>ModelList</code> 中 status 的声明如下：</p><pre><code class="language-julia hljs">model = ModelList(
+    ToyToyModel(1),
+    status = ( a = 1, b = 0, c = 0),
+)</code></pre><p>如果你把 <code>status = ...</code> 替换为多尺度的写法 <code>Status(...)</code>，会遇到如下报错：</p><pre><code class="language-julia hljs">ERROR: MethodError: no method matching process(::Status{(:a, :b, :c), Tuple{Base.RefValue{Int64}, Base.RefValue{Int64}, Base.RefValue{Int64}}})
+虽然存在名为 `process` 的函数，但没有为这种参数组合定义该方法。
+
+最接近的方法是：
+  process(::Pair{Symbol, A}) where A&lt;:AbstractModel
+   @ PlantSimEngine ~/path/to/pkg/PlantSimEngine/src/Abstract_model_structs.jl:16
+  process(::A) where A&lt;:AbstractModel
+   @ PlantSimEngine ~/path/to/pkg/PlantSimEngine/src/Abstract_model_structs.jl:13
+
+堆栈跟踪:
+ [1] (::PlantSimEngine.var&quot;#5#6&quot;)(i::Status{(:a, :b, :c), Tuple{Base.RefValue{…}, Base.RefValue{…}, Base.RefValue{…}}})
+   @ PlantSimEngine ./none:0
+ [2] iterate</code></pre><p>如果你在多尺度仿真中做了相反的事情——即将必需的 <code>Status(...)</code> 写法替换成 <code>status = ...</code>，你可能会遇到 <code>ERROR: syntax: invalid named tuple element</code> 这样的错误。下面是对 Toy Plant 教程的 mapping 做这种修改时出现的典型报错示例：</p><pre><code class="language-julia hljs">ERROR: syntax: invalid named tuple element &quot;MultiScaleModel(...)&quot; around /path/to/Pkg/PlantSimEngine/examples/ToyMultiScalePlantTutorial/ToyPlantSimulation3.jl:196
+Stacktrace:
+ [1] top-level scope
+   @ ~/path/to/pkg/PlantSimEngine/examples/ToyMultiScalePlantTutorial/ToyPlantSimulation3.jl:196</code></pre><p>或</p><pre><code class="language-julia hljs">ERROR: syntax: invalid named tuple element &quot;ToyRootGrowthModel(50, 10)&quot; around /path/to/Pkg/PlantSimEngine/examples/ToyMultiScalePlantTutorial/ToyPlantSimulation3.jl:196
+Stacktrace:
+ [1] top-level scope
+   @ ~/path/to/Pkg/PlantSimEngine/examples/ToyMultiScalePlantTutorial/ToyPlantSimulation3.jl:196</code></pre><h2 id="在-mapping-中忘记声明某个尺度，但变量却指向了该尺度"><a class="docs-heading-anchor" href="#在-mapping-中忘记声明某个尺度，但变量却指向了该尺度">在 mapping 中忘记声明某个尺度，但变量却指向了该尺度</a><a id="在-mapping-中忘记声明某个尺度，但变量却指向了该尺度-1"></a><a class="docs-heading-anchor-permalink" href="#在-mapping-中忘记声明某个尺度，但变量却指向了该尺度" title="Permalink"></a></h2><p>如果需要在两个不同尺度上收集变量，但 mapping 里某个尺度完全没有声明模型，目前 Julia 端会报错如下：</p><pre><code class="language-julia hljs"># mapping 里没有 E3 尺度的模型！
+
+&quot;E2&quot; =&gt; (
+        MultiScaleModel(
+        model = HardDepSameScaleEchelle2Model(),
+        mapped_variables=[:c =&gt; &quot;E1&quot; =&gt; :c, :e3 =&gt; &quot;E3&quot; =&gt; :e3, :f3 =&gt; &quot;E3&quot; =&gt; :f3,], 
+        ),
+    ),
+
+Exception has occurred: KeyError
+*
+KeyError: key &quot;E3&quot; not found
+Stacktrace:
+[1] hard_dependencies(mapping::Dict{String, Tuple{Any, Any}}; verbose::Bool)
+@ PlantSimEngine ......./src/dependencies/hard_dependencies.jl:175
+...</code></pre><h3 id="mapping-声明时的括号位置问题"><a class="docs-heading-anchor" href="#mapping-声明时的括号位置问题">mapping 声明时的括号位置问题</a><a id="mapping-声明时的括号位置问题-1"></a><a class="docs-heading-anchor-permalink" href="#mapping-声明时的括号位置问题" title="Permalink"></a></h3><p>在声明 mapping 时，曾遇到过一种让人迷惑的错误：</p><pre><code class="language-julia hljs">ERROR: ArgumentError: AbstractDict(kv): kv needs to be an iterator of 2-tuples or pairs</code></pre><p>这个错误经常发生在 mapping 声明中 <code>=&gt;</code> 后面应有括号却忘记加，并且与另一个括号写法错误叠加时。例如：</p><pre><code class="language-julia hljs">mapping = Dict( &quot;Scale&quot; =&gt; (ToyAssimGrowthModel(0.0, 0.0, 0.0), ToyCAllocationModel(), Status( TT_cu=Vector(cumsum(meteo_day.TT))), ), )</code></pre><p>除此以外，还可能遇到如下错误：</p><pre><code class="language-julia hljs">ERROR: MethodError: no method matching Dict(::Pair{String, ToyAssimGrowthModel{Float64}}, ::ToyCAllocationModel, ::Status{(:TT_cu,), Tuple{Base.RefValue{…}}})
+The type `Dict` exists, but no method is defined for this combination of argument types when trying to construct it.
+
+Closest candidates are:
+  Dict(::Pair{K, V}...) where {K, V}</code></pre><p>这通常暗示 mapping 声明的语法有误，请仔细检查括号和逗号的位置。</p><h3 id="多尺度模拟中的空状态向量"><a class="docs-heading-anchor" href="#多尺度模拟中的空状态向量">多尺度模拟中的空状态向量</a><a id="多尺度模拟中的空状态向量-1"></a><a class="docs-heading-anchor-permalink" href="#多尺度模拟中的空状态向量" title="Permalink"></a></h3><p>这种情况下不会直接报错。如果你在 MTG 中忘记在相应尺度上增加某个节点，并且没有为该节点生成器官，对应输出变量会返回空向量，容易让人疑惑。</p><p>这里有一个例子，取自<a href="../multiscale/single_to_multiscale.html#将单尺度模拟转换为多尺度模拟">将单尺度模拟转换为多尺度模拟</a>页面，并对伪 MTG 做了修改：把传入 <a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a> 函数的 &quot;Plant&quot; 节点去掉了。没有 &quot;Plant&quot; 节点时，只能先运行 &quot;Scene&quot; 尺度的模型，由于没有新节点创建，&quot;Plant&quot; 尺度的模型永远不会被运行。</p><pre><code class="language-julia hljs">PlantSimEngine.@process &quot;tt_cu&quot; verbose = false
+
+struct ToyTt_CuModel &lt;: AbstractTt_CuModel end
+
+function PlantSimEngine.run!(::ToyTt_CuModel, models, status, meteo, constants, extra=nothing)
+    status.TT_cu +=
+        meteo.TT
+end
+
+function PlantSimEngine.inputs_(::ToyTt_CuModel)
+    NamedTuple() # 没有输入变量
+end
+
+function PlantSimEngine.outputs_(::ToyTt_CuModel)
+    (TT_cu=-Inf,)
+end
+
+mapping_multiscale = Dict(
+    &quot;Scene&quot; =&gt; ToyTt_CuModel(),
+    &quot;Plant&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyLAIModel(),
+            mapped_variables=[
+                :TT_cu =&gt; &quot;Scene&quot;,
+            ],
+        ),
+        Beer(0.5),
+        ToyRUEGrowthModel(0.2),
+    ),
+)
+
+mtg_multiscale = MultiScaleTreeGraph.Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Plant&quot;, 0, 0),)
+#plant = MultiScaleTreeGraph.Node(mtg_multiscale, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Plant&quot;, 1, 1))
+
+out_multiscale = run!(mtg_multiscale, mapping_multiscale, meteo_day)
+
+out_multiscale[&quot;Plant&quot;][:LAI]</code></pre><p>在上述代码中，取消第二行的注释可以为 MTG 增加一个 &quot;Plant&quot; 节点，此时模拟的行为会符合我们直觉的预期。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../multiscale/multiscale_example_4.html">« 用 PlantGeom 可视化玩具植株</a><a class="docs-footer-nextpage" href="downstream_tests.html">自动化测试 »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Saturday 10 January 2026 19:42">Saturday 10 January 2026</span>. Using Julia version 1.12.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>用 PlantGeom 可视化玩具植株 · PlantSimEngine.jl</title><meta name="title" content="用 PlantGeom 可视化玩具植株 · PlantSimEngine.jl"/><meta property="og:title" content="用 PlantGeom 可视化玩具植株 · PlantSimEngine.jl"/><meta property="twitter:title" content="用 PlantGeom 可视化玩具植株 · PlantSimEngine.jl"/><meta name="description" content="Documentation for PlantSimEngine.jl."/><meta property="og:description" content="Documentation for PlantSimEngine.jl."/><meta property="twitter:description" content="Documentation for PlantSimEngine.jl."/><meta property="og:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_4.html"/><meta property="twitter:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_4.html"/><link rel="canonical" href="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_4.html"/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../index.html">PlantSimEngine.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">首页</a></li><li><span class="tocitem">简介</span><ul><li><a class="tocitem" href="../introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？</a></li><li><a class="tocitem" href="../introduction/why_julia.html">为什么选择 Julia？</a></li></ul></li><li><span class="tocitem">前置条件</span><ul><li><a class="tocitem" href="../prerequisites/installing_plantsimengine.html">PlantSimEngine 的安装与运行</a></li><li><a class="tocitem" href="../prerequisites/key_concepts.html">关键概念</a></li><li><a class="tocitem" href="../prerequisites/julia_basics.html">Julia 语言基础</a></li></ul></li><li><span class="tocitem">分步教程 - 单尺度模拟</span><ul><li><a class="tocitem" href="../step_by_step/detailed_first_example.html">详细的第一个模拟</a></li><li><a class="tocitem" href="../step_by_step/simple_model_coupling.html">模型耦合</a></li><li><a class="tocitem" href="../step_by_step/model_switching.html">模型切换</a></li><li><a class="tocitem" href="../step_by_step/quick_and_dirty_examples.html">快速示例</a></li><li><a class="tocitem" href="../step_by_step/implement_a_process.html">实现一个过程</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model.html">实现一个模型</a></li><li><a class="tocitem" href="../step_by_step/parallelization.html">并行化</a></li><li><a class="tocitem" href="../step_by_step/advanced_coupling.html">高级耦合与硬依赖</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model_additional.html">实现一个模型：补充说明</a></li></ul></li><li><a class="tocitem" href="../model_execution.html">模型执行</a></li><li><span class="tocitem">数据处理</span><ul><li><a class="tocitem" href="../working_with_data/reducing_dof.html">降低自由度</a></li><li><a class="tocitem" href="../working_with_data/fitting.html">拟合</a></li><li><a class="tocitem" href="../working_with_data/inputs.html">输入类型</a></li><li><a class="tocitem" href="../working_with_data/visualising_outputs.html">可视化输出与数据</a></li><li><a class="tocitem" href="../working_with_data/floating_point_accumulation_error.html">浮点运算注意事项</a></li></ul></li><li><span class="tocitem">多尺度建模</span><ul><li><a class="tocitem" href="multiscale_considerations.html">多尺度建模考量</a></li><li><a class="tocitem" href="single_to_multiscale.html">单尺度模型转换为多尺度</a></li><li><a class="tocitem" href="multiscale.html">更多变量映射示例</a></li><li><a class="tocitem" href="multiscale_cyclic.html">循环依赖的处理</a></li><li><a class="tocitem" href="multiscale_coupling.html">多尺度耦合相关说明</a></li><li><input class="collapse-toggle" id="menuitem-7-6" type="checkbox"/><label class="tocitem" for="menuitem-7-6"><span class="docs-label">构建简单植株</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="multiscale_example_1.html">简单植株模拟</a></li><li><a class="tocitem" href="multiscale_example_2.html">拓展植株模拟</a></li><li><a class="tocitem" href="multiscale_example_3.html">修复植株模拟中的错误</a></li></ul></li><li class="is-active"><a class="tocitem" href="multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></li><li><span class="tocitem">故障排查与测试</span><ul><li><a class="tocitem" href="../troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html">故障排查</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/downstream_tests.html">自动化测试</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/tips_and_workarounds.html">技巧与常见问题</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/implicit_contracts.html">隐性约定</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../API/API_public.html">公共 API</a></li><li><a class="tocitem" href="../API/API_examples.html">示例模型</a></li><li><a class="tocitem" href="../API/API_private.html">内部 API</a></li></ul></li><li><a class="tocitem" href="../documentation_improvement.html">改进文档</a></li><li><a class="tocitem" href="../developers.html">开发者指南</a></li><li><a class="tocitem" href="../planned_features.html">规划功能</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">多尺度建模</a></li><li class="is-active"><a href="multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/docs - 中文/src/multiscale/multiscale_example_4.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="使用-PlantGeom-可视化植物"><a class="docs-heading-anchor" href="#使用-PlantGeom-可视化植物">使用 PlantGeom 可视化植物</a><a id="使用-PlantGeom-可视化植物-1"></a><a class="docs-heading-anchor-permalink" href="#使用-PlantGeom-可视化植物" title="Permalink"></a></h1><p>我们已经创建了我们的玩具植物，其中一个有趣的部分就是实际将其可视化！</p><p>让我们来看看如何用 <a href="https://github.com/VEZY/PlantGeom.jl">PlantGeom</a> 辅助包实现这一点。</p><p>我们将重复使用植物教程第 3 部分生成的 mtg：<a href="multiscale_example_3.html#修复植物模拟中的Bug">修复植物模拟中的Bug</a>。因此，你需要先运行那部分的模拟，或者将相应的脚本文件包含进当前的代码（这里我们选择包含脚本文件）：</p><pre><code class="language-julia hljs">using PlantSimEngine
+using MultiScaleTreeGraph
+using PlantSimEngine.Examples
+using Pkg
+Pkg.add(&quot;CSV&quot;)
+using CSV
+include(&quot;ToyPlantSimulation3.jl&quot;)</code></pre><p>你需要在环境中添加 PlantGeom 以及一个兼容的可视化包。这里我们使用 Plots：</p><pre><code class="language-julia hljs">using Plots
+using PlantGeom</code></pre><p>仅需这些步骤，就能比在控制台打印 MTG 有更好的显示效果。你只需输入下方一行代码即可：</p><pre><code class="language-julia hljs">RecipesBase.plot(mtg)</code></pre><p>效果如下图所示： <img src="../www/mtg_plot_1.svg" alt="MTG Plots visualization"/></p><p>就这样！</p><p>我们可以看到根朝一个方向扩展，而节间和它们的叶片则朝另一个方向生长。</p><p>当然，这样已经挺好了，但我们还可以更进一步。</p><p>PlantGeom 能够根据 MTG 中的信息渲染几何体。如果树图中的某个节点有一个带有网格和变换的 <code>:geometry</code> 属性，它就能利用这些信息来构建植物结构。这个网格可以是每个节点独有的，也可以是基于一个参考网格，对每个节点进行复制和变换得到。</p><div class="admonition is-info" id="Note-7f5932fe2dc7d558"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-7f5932fe2dc7d558" title="Permalink"></a></header><div class="admonition-body"><p>本页面只是用于演示 PlantGeom 的功能，并没有追求非常真实或美观的可视化效果。一些随机性可以让植物看起来更有生机，但这样做也会让代码更难理解和维护，因此这里没有采用。</p></div></div><p>我们的 MTG 目前还没有这样的属性，所以我们需要遍历每个节点，给它们分配网格并计算合适的变换方式。对于相关的三个尺度：节间、根和叶片，我们将分别用一个参考网格。</p><p>我们会用到 Meshes 包中的一些基础几何体和变换函数，还需要用到 TransformsBase 和 Rotations 包中的一些辅助函数。对于叶片，我们将用 PlyIO 包读取一个 .ply 文件，这里面存有一个非常简化的叶片+叶柄网格。</p><p>另外，我们还将让植物呈现对生十字排列（opposite decussate）：每对叶片成对出现，且每对之间沿茎轴旋转 90 度。</p><p>用于给节点添加几何体属性的函数如下：</p><pre><code class="language-julia hljs">PlantGeom.Geometry(; ref_mesh&lt;:RefMesh, transformation=Identity(), dUp=1.0, dDwn=1.0, mesh::Union{SimpleMesh,Nothing}=nothing)</code></pre><p>对于本例，我们只需要关心前两个参数。对于每一个单一的节间和根节点，可以直接使用简单的圆柱作为网格。</p><pre><code class="language-julia hljs">using PlantGeom.Meshes
+
+# 节间和根将使用圆柱体作为网格
+
+cylinder() = Meshes.CylinderSurface(1.0) |&gt; Meshes.discretize |&gt; Meshes.simplexify
+
+refmesh_internode = PlantGeom.RefMesh(&quot;Internode&quot;, cylinder())
+refmesh_root = PlantGeom.RefMesh(&quot;Root&quot;, cylinder())</code></pre><p>一个用于从 .ply 文件读取叶片顶点和面信息的简单函数：</p><pre><code class="language-julia hljs">Pkg.add(&quot;PlyIO&quot;)
+using PlyIO
+function read_ply(fname)
+    ply = PlyIO.load_ply(fname)
+    x = ply[&quot;vertex&quot;][&quot;x&quot;]
+    y = ply[&quot;vertex&quot;][&quot;y&quot;]
+    z = ply[&quot;vertex&quot;][&quot;z&quot;]  
+    points = Meshes.Point.(x, y, z)
+    connec = [Meshes.connect(Tuple(c .+ 1)) for c in ply[&quot;face&quot;][&quot;vertex_indices&quot;]]
+    Meshes.SimpleMesh(points, connec)
+end
+
+leaf_ply = read_ply(&quot;examples/leaf_with_petiole.ply&quot;)
+refmesh_leaf = PlantGeom.RefMesh(&quot;Leaf&quot;, leaf_ply)</code></pre><pre><code class="language-julia hljs">Pkg.add(&quot;TransformsBase&quot;)
+Pkg.add(&quot;Rotations&quot;)
+import TransformsBase: →
+import Rotations: RotY, RotZ, RotX</code></pre><div class="admonition is-info" id="Note-c7b516506f5aed7e"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-c7b516506f5aed7e" title="Permalink"></a></header><div class="admonition-body"><p>我们将使用 X、Y、Z 作为标准的笛卡尔坐标轴，其中 Z 轴朝上。</p></div></div><p>接下来可以编写一个函数，为我们的 MTG 添加几何信息。</p><p>该函数从基部节点开始遍历 MTG，并为每个遇到的节点添加变换信息。</p><p>下面的代码仅针对节间（为便于理解）：</p><pre><code class="language-julia hljs"># 给MTG添加几何信息，并进行变换
+function add_geometry!(mtg, refmesh_internode) 
+    
+    # 节间的累加偏移高度
+    internode_height = 0.0
+
+    # 基础网格的相对缩放比例（基准圆柱半径为1）
+    internode_width = 0.5
+
+    # 基础网格的长度
+    internode_length = 1.0
+
+    traverse!(mtg) do node
+        if symbol(node) == &quot;Internode&quot;
+            # 先缩放，再根据累计高度进行平移
+            mesh_transformation = Meshes.Scale(internode_width, internode_width, internode_length) → Meshes.Translate(0.0, 0.0, internode_height)
+            node.geometry = PlantGeom.Geometry(ref_mesh=refmesh_internode, transformation=mesh_transformation)
+            
+            internode_height += node_length
+        end
+    end
+end</code></pre><p>我们只需要为茎干选择一个宽度，并在遍历时逐步递增高度，将下一个节间放置到正确的位置。</p><p>注意 Meshes.jl 提供的默认圆柱体朝上，因此无需旋转。根的处理也类似，只需向下平移，并且需要从原点下方开始。</p><p>我们可以使用 GLMakie 渲染后端可视化这个简单的茎结构：</p><pre><code class="language-julia hljs">add_geometry!(mtg, refmesh_internode)
+
+# 可视化网格
+using GLMakie
+viz(mtg)</code></pre><p><img src="../www/toy_plant_stem_only.png" alt="玩具植物——仅有茎"/></p><p>另一方面，叶片的网格需要进行旋转，但它本身已经沿 X 轴对齐，因此不需要像圆柱一样做初始的重新定向。叶柄起点在原点，所以除了把它们平移到叶片的高度之外，还需要根据节间半径在 Z 轴方向之外进行平移。由于叶子网格本身长度只有 0.1 单位，而我们的节间宽度有 0.5，因此还需要进行缩放。</p><p>我们还可以将叶片稍微上抬，使其略微朝上。</p><p>如果你使用了其他网格，请注意它们的初始平移、朝向和缩放，通常需要多次试验和调整比例及变换参数才能得到理想效果。</p><p>下面给出用于为玩具植物所有器官添加几何体的完整代码：</p><pre><code class="language-julia hljs"># 为MTG添加各器官的几何信息及变换
+function add_geometry!(mtg, refmesh_internode, refmesh_root, refmesh_leaf) 
+    
+    # 节间的累加高度，根的累加深度
+    internode_height = 0.0
+    root_depth = 0.0
+
+    # 基础网格的相对缩放比例（基础圆柱高度为1，半径为1）
+    internode_width = 0.5
+    root_width = 0.2
+
+    # 基础网格的长度
+    internode_length = 1.0
+    root_length = 1.0
+
+    # 用于调整叶片网格到场景比例的经验系数
+    leaf_mesh_scale = 25
+
+    leaf_scale_width = 0.4 * leaf_mesh_scale
+    leaf_scale_height = 0.4 * leaf_mesh_scale
+    
+    # 用于实现叶片对生轮换的辅助参数
+    leaf_rotation = MathConstants.pi / 2.0
+    i = 0
+
+    traverse!(mtg) do node
+        if symbol(node) == &quot;Internode&quot;
+            # 先缩放，再按累计高度平移
+            mesh_transformation = Meshes.Scale(internode_width, internode_width, internode_length) → Meshes.Translate(0.0, 0.0, internode_height)
+            node.geometry = PlantGeom.Geometry(ref_mesh=refmesh_internode, transformation=mesh_transformation)
+            
+            internode_height += internode_length
+
+            # 叶片相对于母节间，在节间长度的一半处放置
+            for chnode in children(node)               
+                if symbol(chnode) == &quot;Leaf&quot; 
+                    mesh_transformation = Meshes.Scale(leaf_scale_width, leaf_scale_width, leaf_scale_height) → Meshes.Rotate(RotX(-MathConstants.pi / 6.0)) → Meshes.Translate(0.0, -internode_width, internode_height - internode_length / 2.0) → Meshes.Rotate(RotZ(leaf_rotation))
+                    chnode.geometry = PlantGeom.Geometry(ref_mesh=refmesh_leaf, transformation=mesh_transformation)
+                    # 为实现叶片对生，第二片叶子比第一片多旋转180°
+                    leaf_rotation += MathConstants.pi
+                end                
+            end
+
+            # 对生轮换，每对之间轮换90°
+            i += 1
+            if i % 2 == 0
+                leaf_rotation = MathConstants.pi / 2.0
+            else
+                leaf_rotation = MathConstants.pi
+            end
+
+        elseif symbol(node) == &quot;Root&quot;
+            mesh_transformation = Meshes.Scale(root_width, root_width, root_length) → Meshes.Translate(0.0, 0.0, root_depth) → Meshes.Rotate(RotZ(MathConstants.pi))
+            node.geometry = PlantGeom.Geometry(ref_mesh=refmesh_root, transformation=mesh_transformation)
+            root_depth -= root_length
+        end
+    end
+end</code></pre><p>现在，让我们来可视化这株完全生长、具备全部特性的植物吧：</p><pre><code class="language-julia hljs"># 可视化网格
+using GLMakie
+viz(mtg)    </code></pre><p>你将会得到如下的图像场景：</p><p><img src="../www/toy_plant.png" alt="带根和叶片的玩具植物"/></p><p>欢迎尝试让这棵植物变得更漂亮、更有色彩，或更具物理真实感——你可以在 PlantSimEngine 侧使用更真实的模型，或者在 Plantgeom 端设计更精细的几何结构。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="multiscale_example_3.html">« 修复植株模拟中的错误</a><a class="docs-footer-nextpage" href="../troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html">故障排查 »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Saturday 10 January 2026 19:42">Saturday 10 January 2026</span>. Using Julia version 1.12.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

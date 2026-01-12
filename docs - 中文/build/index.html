@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>首页 · PlantSimEngine.jl</title><meta name="title" content="首页 · PlantSimEngine.jl"/><meta property="og:title" content="首页 · PlantSimEngine.jl"/><meta property="twitter:title" content="首页 · PlantSimEngine.jl"/><meta name="description" content="Documentation for PlantSimEngine.jl."/><meta property="og:description" content="Documentation for PlantSimEngine.jl."/><meta property="twitter:description" content="Documentation for PlantSimEngine.jl."/><meta property="og:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/index.html"/><meta property="twitter:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/index.html"/><link rel="canonical" href="https://VirtualPlantLab.github.io/PlantSimEngine.jl/index.html"/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="index.html">PlantSimEngine.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href="index.html">首页</a><ul class="internal"><li><a class="tocitem" href="#概述"><span>概述</span></a></li><li><a class="tocitem" href="#独特特性"><span>独特特性</span></a></li><li><a class="tocitem" href="#集成“电池”——开箱即用的功能"><span>集成“电池”——开箱即用的功能</span></a></li><li><a class="tocitem" href="#性能表现"><span>性能表现</span></a></li><li><a class="tocitem" href="#问题反馈"><span>问题反馈</span></a></li><li><a class="tocitem" href="#安装方法"><span>安装方法</span></a></li><li><a class="tocitem" href="#使用示例"><span>使用示例</span></a></li><li><a class="tocitem" href="#领域现状"><span>领域现状</span></a></li><li><a class="tocitem" href="#使用-PlantSimEngine-的项目"><span>使用 PlantSimEngine 的项目</span></a></li><li><a class="tocitem" href="#让它成为你的工具"><span>让它成为你的工具</span></a></li></ul></li><li><span class="tocitem">简介</span><ul><li><a class="tocitem" href="introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？</a></li><li><a class="tocitem" href="introduction/why_julia.html">为什么选择 Julia？</a></li></ul></li><li><span class="tocitem">前置条件</span><ul><li><a class="tocitem" href="prerequisites/installing_plantsimengine.html">PlantSimEngine 的安装与运行</a></li><li><a class="tocitem" href="prerequisites/key_concepts.html">关键概念</a></li><li><a class="tocitem" href="prerequisites/julia_basics.html">Julia 语言基础</a></li></ul></li><li><span class="tocitem">分步教程 - 单尺度模拟</span><ul><li><a class="tocitem" href="step_by_step/detailed_first_example.html">详细的第一个模拟</a></li><li><a class="tocitem" href="step_by_step/simple_model_coupling.html">模型耦合</a></li><li><a class="tocitem" href="step_by_step/model_switching.html">模型切换</a></li><li><a class="tocitem" href="step_by_step/quick_and_dirty_examples.html">快速示例</a></li><li><a class="tocitem" href="step_by_step/implement_a_process.html">实现一个过程</a></li><li><a class="tocitem" href="step_by_step/implement_a_model.html">实现一个模型</a></li><li><a class="tocitem" href="step_by_step/parallelization.html">并行化</a></li><li><a class="tocitem" href="step_by_step/advanced_coupling.html">高级耦合与硬依赖</a></li><li><a class="tocitem" href="step_by_step/implement_a_model_additional.html">实现一个模型：补充说明</a></li></ul></li><li><a class="tocitem" href="model_execution.html">模型执行</a></li><li><span class="tocitem">数据处理</span><ul><li><a class="tocitem" href="working_with_data/reducing_dof.html">降低自由度</a></li><li><a class="tocitem" href="working_with_data/fitting.html">拟合</a></li><li><a class="tocitem" href="working_with_data/inputs.html">输入类型</a></li><li><a class="tocitem" href="working_with_data/visualising_outputs.html">可视化输出与数据</a></li><li><a class="tocitem" href="working_with_data/floating_point_accumulation_error.html">浮点运算注意事项</a></li></ul></li><li><span class="tocitem">多尺度建模</span><ul><li><a class="tocitem" href="multiscale/multiscale_considerations.html">多尺度建模考量</a></li><li><a class="tocitem" href="multiscale/single_to_multiscale.html">单尺度模型转换为多尺度</a></li><li><a class="tocitem" href="multiscale/multiscale.html">更多变量映射示例</a></li><li><a class="tocitem" href="multiscale/multiscale_cyclic.html">循环依赖的处理</a></li><li><a class="tocitem" href="multiscale/multiscale_coupling.html">多尺度耦合相关说明</a></li><li><input class="collapse-toggle" id="menuitem-7-6" type="checkbox"/><label class="tocitem" for="menuitem-7-6"><span class="docs-label">构建简单植株</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="multiscale/multiscale_example_1.html">简单植株模拟</a></li><li><a class="tocitem" href="multiscale/multiscale_example_2.html">拓展植株模拟</a></li><li><a class="tocitem" href="multiscale/multiscale_example_3.html">修复植株模拟中的错误</a></li></ul></li><li><a class="tocitem" href="multiscale/multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></li><li><span class="tocitem">故障排查与测试</span><ul><li><a class="tocitem" href="troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html">故障排查</a></li><li><a class="tocitem" href="troubleshooting_and_testing/downstream_tests.html">自动化测试</a></li><li><a class="tocitem" href="troubleshooting_and_testing/tips_and_workarounds.html">技巧与常见问题</a></li><li><a class="tocitem" href="troubleshooting_and_testing/implicit_contracts.html">隐性约定</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="API/API_public.html">公共 API</a></li><li><a class="tocitem" href="API/API_examples.html">示例模型</a></li><li><a class="tocitem" href="API/API_private.html">内部 API</a></li></ul></li><li><a class="tocitem" href="documentation_improvement.html">改进文档</a></li><li><a class="tocitem" href="developers.html">开发者指南</a></li><li><a class="tocitem" href="planned_features.html">规划功能</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href="index.html">首页</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="index.html">首页</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/docs - 中文/src/index.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="PlantSimEngine"><a class="docs-heading-anchor" href="#PlantSimEngine">PlantSimEngine</a><a id="PlantSimEngine-1"></a><a class="docs-heading-anchor-permalink" href="#PlantSimEngine" title="Permalink"></a></h1><p><a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/actions/workflows/CI.yml?query=branch%3Amain"><img src="https://github.com/VirtualPlantLab/PlantSimEngine.jl/actions/workflows/CI.yml/badge.svg?branch=main" alt="构建状态"/></a> <a href="https://codecov.io/gh/VirtualPlantLab/PlantSimEngine.jl"><img src="https://codecov.io/gh/VirtualPlantLab/PlantSimEngine.jl/branch/main/graph/badge.svg" alt="覆盖率"/></a> <a href="https://github.com/SciML/ColPrac"><img src="https://img.shields.io/badge/ColPrac-Contributor&#39;s%20Guide-blueviolet" alt="ColPrac: 社区包协作实践贡献者指南"/></a> <a href="https://github.com/JuliaTesting/Aqua.jl"><img src="https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg" alt="Aqua 质量保证"/></a> <a href="https://zenodo.org/badge/latestdoi/571659510"><img src="https://zenodo.org/badge/571659510.svg" alt="DOI"/></a> <a href="https://joss.theoj.org/papers/137e3e6c2ddc349bec39e06bb04e4e09"><img src="https://joss.theoj.org/papers/137e3e6c2ddc349bec39e06bb04e4e09/status.svg" alt="JOSS"/></a></p><ul><li><a href="index.html#PlantSimEngine">PlantSimEngine</a></li><li class="no-marker"><ul><li><a href="index.html#概述">概述</a></li><li><a href="index.html#独特特性">独特特性</a></li><li class="no-marker"><ul><li><a href="index.html#自动耦合模型">自动耦合模型</a></li><li><a href="index.html#灵活且精细可控">灵活且精细可控</a></li></ul></li><li><a href="index.html#集成“电池”——开箱即用的功能">集成“电池”——开箱即用的功能</a></li><li><a href="index.html#性能表现">性能表现</a></li><li><a href="index.html#问题反馈">问题反馈</a></li><li><a href="index.html#安装方法">安装方法</a></li><li><a href="index.html#使用示例">使用示例</a></li><li class="no-marker"><ul><li><a href="index.html#简单示例">简单示例</a></li><li><a href="index.html#模型耦合">模型耦合</a></li><li><a href="index.html#多尺度的建模">多尺度的建模</a></li></ul></li><li><a href="index.html#领域现状">领域现状</a></li><li><a href="index.html#使用-PlantSimEngine-的项目">使用 PlantSimEngine 的项目</a></li><li><a href="index.html#让它成为你的工具">让它成为你的工具</a></li></ul></li></ul><h2 id="概述"><a class="docs-heading-anchor" href="#概述">概述</a><a id="概述-1"></a><a class="docs-heading-anchor-permalink" href="#概述" title="Permalink"></a></h2><p><code>PlantSimEngine</code> 是一个专为构建土壤-植株-大气连续体模型而设计的综合性框架。它为在任何尺度上<strong>原型设计、评估、测试和部署</strong>植物/作物模型提供了所需的一切，极大地强调了性能和效率，让您能专注于模型的构建与完善。</p><p><strong>为什么选择 PlantSimEngine？</strong></p><ul><li><strong>简单性</strong>：极大减少代码量，专注于模型逻辑，其余交给框架自动处理。</li><li><strong>模块化</strong>：每个模型组件都可独立开发、测试与改进。可通过复用高质量的预构建模块，灵活组装复杂仿真。</li><li><strong>标准化</strong>：具有清晰且可执行的规范，保证所有模型都遵循最佳实践。如此一来，模型可在整个生态系统内无缝协作。</li><li><strong>性能优化</strong>：无需重复造轮子。低层的繁琐任务全部交由 PlantSimEngine 负责，您的模型能享受到底层框架的每一次优化和性能提升。以 Julia 的高性能保证高效的原型迭代与模型运行。</li></ul><h2 id="独特特性"><a class="docs-heading-anchor" href="#独特特性">独特特性</a><a id="独特特性-1"></a><a class="docs-heading-anchor-permalink" href="#独特特性" title="Permalink"></a></h2><h3 id="自动耦合模型"><a class="docs-heading-anchor" href="#自动耦合模型">自动耦合模型</a><a id="自动耦合模型-1"></a><a class="docs-heading-anchor-permalink" href="#自动耦合模型" title="Permalink"></a></h3><p><strong>无缝集成</strong>：PlantSimEngine 充分利用 Julia 多重分派的强大能力，能够自动计算模型间的依赖图，研究人员无需编写复杂的连接代码或手动处理依赖关系，即可便捷实现模型耦合。</p><p><strong>直观的多尺度支持</strong>：框架能够自然支持不同空间尺度（从细胞器到生态系统）的模型间耦合，仅需极小的工作量，即可维护不同尺度间的状态一致性。</p><h3 id="灵活且精细可控"><a class="docs-heading-anchor" href="#灵活且精细可控">灵活且精细可控</a><a id="灵活且精细可控-1"></a><a class="docs-heading-anchor-permalink" href="#灵活且精细可控" title="Permalink"></a></h3><p><strong>轻松切换模型组件</strong>：通过简洁直观的语法，用户可在不更改模型底层代码的情况下切换不同的组件，实现不同假设与模型版本之间的快速对比，极大加速科学发现过程。</p><h2 id="集成“电池”——开箱即用的功能"><a class="docs-heading-anchor" href="#集成“电池”——开箱即用的功能">集成“电池”——开箱即用的功能</a><a id="集成“电池”——开箱即用的功能-1"></a><a class="docs-heading-anchor-permalink" href="#集成“电池”——开箱即用的功能" title="Permalink"></a></h2><ul><li><strong>自动化管理</strong>：自动处理输入、输出、时间步长、对象及依赖关系。</li><li><strong>迭代开发</strong>：拥有内建约束，避免错误，同时具备合理默认值，加快模型的交互式原型设计。</li><li><strong>自由度管理</strong>：可固定变量为常数或观测值，也可针对具体过程采用简化模型以降低整体复杂度。</li><li><strong>高速计算</strong>：已在复杂模型中实现了百纳秒级的性能表现（见此<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/examples/benchmark.jl">基准测试脚本</a>）。</li><li><strong>并行与分布式计算</strong>：借助 <a href="https://juliafolds.github.io/FLoops.jl/stable/">Floops.jl</a>，对象、时间步或独立过程均可自动支持串行、多线程或分布式计算。</li><li><strong>无缝扩展</strong>：支持对象、时间步和 <a href="https://github.com/VEZY/MultiScaleTreeGraph.jl">多尺度树结构</a>的高效计算方法。</li><li><strong>自由组合</strong>：输入可以是任意类型，包括 <a href="https://github.com/PainterQubits/Unitful.jl">Unitful</a> 用于单位传播，以及 <a href="https://github.com/baggepinnen/MonteCarloMeasurements.jl">MonteCarloMeasurements.jl</a> 用于测量误差传播。</li></ul><h2 id="性能表现"><a class="docs-heading-anchor" href="#性能表现">性能表现</a><a id="性能表现-1"></a><a class="docs-heading-anchor-permalink" href="#性能表现" title="Permalink"></a></h2><p>PlantSimEngine 在植物建模任务中展现了令人瞩目的性能表现。例如在一台 M1 MacBook Pro 上：</p><ul><li>一个叶面积指数（LAI）玩具模型，以逐日时间步模拟全年，仅耗时 260 微秒（约为每一天 688 纳秒）</li><li>同一个模型与光截获模型耦合后，所需时间为 275 微秒（每一天约为 756 纳秒）</li></ul><p>这些基准测试表明，其性能已媲美 Fortran 或 C 等编译型语言，远超多数解释型语言的典型实现。例如，基于 PlantSimEngine 实现生态生理学模型的 PlantBiophysics.jl，被测得运行速度可比其它科学计算语言中的等价实现快 38,000 倍。</p><h2 id="问题反馈"><a class="docs-heading-anchor" href="#问题反馈">问题反馈</a><a id="问题反馈-1"></a><a class="docs-heading-anchor-permalink" href="#问题反馈" title="Permalink"></a></h2><p>如果有任何疑问或建议，欢迎<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/issues">提交 issue</a>或在 <a href="https://fspm.discourse.group/c/software/virtual-plant-lab">discourse 讨论区</a>咨询。</p><h2 id="安装方法"><a class="docs-heading-anchor" href="#安装方法">安装方法</a><a id="安装方法-1"></a><a class="docs-heading-anchor-permalink" href="#安装方法" title="Permalink"></a></h2><p>要安装本包，请在 Julia REPL 中按下 <code>]</code> 进入包管理模式，然后输入下列命令：</p><pre><code class="language-julia hljs">add PlantSimEngine</code></pre><p>要使用本包，只需在 Julia REPL 输入下列命令：</p><pre><code class="language-julia hljs">using PlantSimEngine</code></pre><h2 id="使用示例"><a class="docs-heading-anchor" href="#使用示例">使用示例</a><a id="使用示例-1"></a><a class="docs-heading-anchor-permalink" href="#使用示例" title="Permalink"></a></h2><p>本包设计为易于上手，并帮助用户在实现、耦合和模拟模型过程中减少出错。</p><h3 id="简单示例"><a class="docs-heading-anchor" href="#简单示例">简单示例</a><a id="简单示例-1"></a><a class="docs-heading-anchor-permalink" href="#简单示例" title="Permalink"></a></h3><p>以下是一个简单的模型示例，模拟了植物的生长过程，采用了指数生长模型：</p><pre><code class="language-julia hljs"># ] add PlantSimEngine
+using PlantSimEngine
+
+# 导入 `Examples` 子模块中定义的示例
+using PlantSimEngine.Examples
+
+# 定义模型：
+model = ModelList(
+    ToyLAIModel(),
+    status=(TT_cu=1.0:2000.0,), # 以积温作为模型输入
+)
+
+out = run!(model) # 运行模型并获取输出</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">TimeStepTable{Status{(:TT_cu, :LAI), Tuple{...}(2000 x 2):
+<span class="sgr31">╭─────┬─────────┬────────────╮</span>
+<span class="sgr31">│</span><span class="sgr1"> Row </span><span class="sgr31">│</span><span class="sgr1">   TT_cu </span><span class="sgr31">│</span><span class="sgr1">        LAI </span><span class="sgr31">│</span>
+<span class="sgr31">│</span>     <span class="sgr31">│</span><span class="sgr90"> Float64 </span><span class="sgr31">│</span><span class="sgr90">    Float64 </span><span class="sgr31">│</span>
+<span class="sgr31">├─────┼─────────┼────────────┤</span>
+<span class="sgr31">│</span>   1 <span class="sgr31">│</span>     1.0 <span class="sgr31">│</span> 0.00560052 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   2 <span class="sgr31">│</span>     2.0 <span class="sgr31">│</span> 0.00565163 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   3 <span class="sgr31">│</span>     3.0 <span class="sgr31">│</span> 0.00570321 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   4 <span class="sgr31">│</span>     4.0 <span class="sgr31">│</span> 0.00575526 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   5 <span class="sgr31">│</span>     5.0 <span class="sgr31">│</span> 0.00580778 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   6 <span class="sgr31">│</span>     6.0 <span class="sgr31">│</span> 0.00586078 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   7 <span class="sgr31">│</span>     7.0 <span class="sgr31">│</span> 0.00591426 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   8 <span class="sgr31">│</span>     8.0 <span class="sgr31">│</span> 0.00596823 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   9 <span class="sgr31">│</span>     9.0 <span class="sgr31">│</span> 0.00602269 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  10 <span class="sgr31">│</span>    10.0 <span class="sgr31">│</span> 0.00607765 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  11 <span class="sgr31">│</span>    11.0 <span class="sgr31">│</span> 0.00613311 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  12 <span class="sgr31">│</span>    12.0 <span class="sgr31">│</span> 0.00618908 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  13 <span class="sgr31">│</span>    13.0 <span class="sgr31">│</span> 0.00624556 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  14 <span class="sgr31">│</span>    14.0 <span class="sgr31">│</span> 0.00630255 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  15 <span class="sgr31">│</span>    15.0 <span class="sgr31">│</span> 0.00636006 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  ⋮  <span class="sgr31">│</span>    ⋮    <span class="sgr31">│</span>     ⋮      <span class="sgr31">│</span>
+<span class="sgr31">╰─────┴─────────┴────────────╯</span>
+<span class="sgr36">             1985 rows omitted</span>
+</code></pre><blockquote><p><strong>注意</strong>   <code>ToyLAIModel</code> 可以在<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/tree/main/examples">示例文件夹</a>中找到，是一个简单的指数生长模型。这里只作为演示使用，实际上你可以使用任意符合 PlantSimEngine 接口的模型。</p></blockquote><p>当然，你也可以很方便地绘制输出结果：</p><pre><code class="language-julia hljs"># ] add CairoMakie
+using CairoMakie
+
+lines(out[:TT_cu], out[:LAI], color=:green, axis=(ylabel=&quot;LAI (m² m⁻²)&quot;, xlabel=&quot;Cumulated growing degree days since sowing (°C)&quot;))</code></pre><img src="index-0d8984c5.png" alt="Example block output"/><h3 id="模型耦合"><a class="docs-heading-anchor" href="#模型耦合">模型耦合</a><a id="模型耦合-1"></a><a class="docs-heading-anchor-permalink" href="#模型耦合" title="Permalink"></a></h3><p>模型的耦合由本包自动完成，基于各模型之间的依赖图实现。要耦合多个模型，只需将它们添加到 <code>ModelList</code> 中即可。例如，下面将 <code>ToyLAIModel</code> 与基于比尔定律（Beer&#39;s law）的光截获模型进行耦合：</p><pre><code class="language-julia hljs"># ] add PlantSimEngine, DataFrames, CSV
+using PlantSimEngine, PlantMeteo, DataFrames, CSV
+
+# 导入 `Examples` 子模块中定义的示例
+using PlantSimEngine.Examples
+
+# 导入示例气象数据：
+meteo_day = CSV.read(joinpath(pkgdir(PlantSimEngine), &quot;examples/meteo_day.csv&quot;), DataFrame, header=18)
+
+# 定义用于耦合的模型列表：
+model2 = ModelList(
+    ToyLAIModel(),
+    Beer(0.6),
+    status=(TT_cu=cumsum(meteo_day[:, :TT]),),  # 将累计生长积温作为 ToyLAIModel 的输入，也可以通过其他模型完成
+)
+
+# 运行模拟：
+out2 = run!(model2, meteo_day)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">TimeStepTable{Status{(:TT_cu, :LAI, :aPPFD)...}(365 x 3):
+<span class="sgr31">╭─────┬──────────┬────────────┬───────────╮</span>
+<span class="sgr31">│</span><span class="sgr1"> Row </span><span class="sgr31">│</span><span class="sgr1">    TT_cu </span><span class="sgr31">│</span><span class="sgr1">        LAI </span><span class="sgr31">│</span><span class="sgr1">     aPPFD </span><span class="sgr31">│</span>
+<span class="sgr31">│</span>     <span class="sgr31">│</span><span class="sgr90">  Float64 </span><span class="sgr31">│</span><span class="sgr90">    Float64 </span><span class="sgr31">│</span><span class="sgr90">   Float64 </span><span class="sgr31">│</span>
+<span class="sgr31">├─────┼──────────┼────────────┼───────────┤</span>
+<span class="sgr31">│</span>   1 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0476221 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   2 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0260688 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   3 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0377774 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   4 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0468871 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   5 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0545266 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   6 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0567055 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   7 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0521376 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   8 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0563642 <span class="sgr31">│</span>
+<span class="sgr31">│</span>   9 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0349947 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  10 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0168016 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  11 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0606171 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  12 <span class="sgr31">│</span>      0.0 <span class="sgr31">│</span> 0.00554988 <span class="sgr31">│</span> 0.0486197 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  13 <span class="sgr31">│</span>   0.5625 <span class="sgr31">│</span> 0.00557831 <span class="sgr31">│</span> 0.0357278 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  14 <span class="sgr31">│</span> 0.945833 <span class="sgr31">│</span> 0.00559777 <span class="sgr31">│</span> 0.0519777 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  15 <span class="sgr31">│</span> 0.979167 <span class="sgr31">│</span> 0.00559946 <span class="sgr31">│</span> 0.0564167 <span class="sgr31">│</span>
+<span class="sgr31">│</span>  ⋮  <span class="sgr31">│</span>    ⋮     <span class="sgr31">│</span>     ⋮      <span class="sgr31">│</span>     ⋮     <span class="sgr31">│</span>
+<span class="sgr31">╰─────┴──────────┴────────────┴───────────╯</span>
+<span class="sgr36">                           350 rows omitted</span>
+</code></pre><p><code>ModelList</code> 会通过自动计算模型之间的依赖图来实现模型的耦合。最终的依赖图如下所示：</p><pre><code class="nohighlight hljs">╭──── Dependency graph ──────────────────────────────────────────╮
+│  ╭──── LAI_Dynamic ─────────────────────────────────────────╮  │
+│  │  ╭──── Main model ────────╮                              │  │
+│  │  │  Process: LAI_Dynamic  │                              │  │
+│  │  │  Model: ToyLAIModel    │                              │  │
+│  │  │  Dep: nothing          │                              │  │
+│  │  ╰────────────────────────╯                              │  │
+│  │                  │  ╭──── Soft-coupled model ─────────╮  │  │
+│  │                  │  │  Process: light_interception    │  │  │
+│  │                  └──│  Model: Beer                    │  │  │
+│  │                     │  Dep: (LAI_Dynamic = (:LAI,),)  │  │  │
+│  │                     ╰─────────────────────────────────╯  │  │
+│  ╰──────────────────────────────────────────────────────────╯  │
+╰────────────────────────────────────────────────────────────────╯</code></pre><p>我们可以通过变量名索引输出结果来绘制模拟结果（如 <code>out2[:LAI]</code>）：</p><pre><code class="language-julia hljs">using CairoMakie
+
+fig = Figure(resolution=(800, 600))
+ax = Axis(fig[1, 1], ylabel=&quot;LAI (m² m⁻²)&quot;)
+lines!(ax, out2[:TT_cu], out2[:LAI], color=:mediumseagreen)
+
+ax2 = Axis(fig[2, 1], xlabel=&quot;Cumulated growing degree days since sowing (°C)&quot;, ylabel=&quot;aPPFD (mol m⁻² d⁻¹)&quot;)
+lines!(ax2, out2[:TT_cu], out2[:aPPFD], color=:firebrick1)
+
+fig</code></pre><img src="index-23291bc5.png" alt="Example block output"/><h3 id="多尺度的建模"><a class="docs-heading-anchor" href="#多尺度的建模">多尺度的建模</a><a id="多尺度的建模-1"></a><a class="docs-heading-anchor-permalink" href="#多尺度的建模" title="Permalink"></a></h3><blockquote><p>更多细节请参见<a href="index.html#multi-scale-modeling">多尺度建模</a>章节。</p></blockquote><p>本包设计高度可扩展，可方便地对不同尺度下的模型进行模拟。例如，可以在叶片尺度模拟模型，再与其他尺度（如节间、植株、土壤、场景等）下的模型进行耦合。下面这个例子展示了一个使用不同尺度下子模型来模拟植物生长的简单模型：</p><pre><code class="language-julia hljs">mapping = Dict(
+    &quot;Scene&quot; =&gt; ToyDegreeDaysCumulModel(),
+    &quot;Plant&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyLAIModel(),
+            mapped_variables=[
+                :TT_cu =&gt; &quot;Scene&quot;,
+            ],
+        ),
+        Beer(0.6),
+        MultiScaleModel(
+            model=ToyAssimModel(),
+            mapped_variables=[:soil_water_content =&gt; &quot;Soil&quot;],
+        ),
+        MultiScaleModel(
+            model=ToyCAllocationModel(),
+            mapped_variables=[
+                :carbon_demand =&gt; [&quot;Leaf&quot;, &quot;Internode&quot;],
+                :carbon_allocation =&gt; [&quot;Leaf&quot;, &quot;Internode&quot;]
+            ],
+        ),
+        MultiScaleModel(
+            model=ToyPlantRmModel(),
+            mapped_variables=[:Rm_organs =&gt; [&quot;Leaf&quot; =&gt; :Rm, &quot;Internode&quot; =&gt; :Rm],],
+        ),
+    ),
+    &quot;Internode&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyCDemandModel(optimal_biomass=10.0, development_duration=200.0),
+            mapped_variables=[:TT =&gt; &quot;Scene&quot;,],
+        ),
+        MultiScaleModel(
+            model=ToyInternodeEmergence(TT_emergence=20.0),
+            mapped_variables=[:TT_cu =&gt; &quot;Scene&quot;],
+        ),
+        ToyMaintenanceRespirationModel(1.5, 0.06, 25.0, 0.6, 0.004),
+        Status(carbon_biomass=1.0)
+    ),
+    &quot;Leaf&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyCDemandModel(optimal_biomass=10.0, development_duration=200.0),
+            mapped_variables=[:TT =&gt; &quot;Scene&quot;,],
+        ),
+        ToyMaintenanceRespirationModel(2.1, 0.06, 25.0, 1.0, 0.025),
+        Status(carbon_biomass=1.0)
+    ),
+    &quot;Soil&quot; =&gt; (
+        ToySoilWaterModel(),
+    ),
+);</code></pre><p>我们可以从包中导入一个示例植物：</p><pre><code class="language-julia hljs">mtg = import_mtg_example()</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">/ 1: Scene
+├─ / 2: Soil
+└─ + 3: Plant
+   └─ / 4: Internode
+      ├─ + 5: Leaf
+      └─ &lt; 6: Internode
+         └─ + 7: Leaf
+</code></pre><p>创建一个虚拟气象数据：</p><pre><code class="language-julia hljs">meteo = Weather(
+    [
+    Atmosphere(T=20.0, Wind=1.0, Rh=0.65, Ri_PAR_f=300.0),
+    Atmosphere(T=25.0, Wind=0.5, Rh=0.8, Ri_PAR_f=500.0)
+]
+);</code></pre><p>然后运行模拟：</p><pre><code class="language-julia hljs">out_vars = Dict(
+    &quot;Scene&quot; =&gt; (:TT_cu,),
+    &quot;Plant&quot; =&gt; (:carbon_allocation, :carbon_assimilation, :soil_water_content, :aPPFD, :TT_cu, :LAI),
+    &quot;Leaf&quot; =&gt; (:carbon_demand, :carbon_allocation),
+    &quot;Internode&quot; =&gt; (:carbon_demand, :carbon_allocation),
+    &quot;Soil&quot; =&gt; (:soil_water_content,),
+)
+
+out = run!(mtg, mapping, meteo, tracked_outputs=out_vars, executor=SequentialEx());</code></pre><p>然后我们可以提取输出，并针对每个层级将其转换为 <code>DataFrame</code> 并进行排序：</p><pre><code class="language-julia hljs">using DataFrames
+df_dict = convert_outputs(out, DataFrame)
+sort!(df_dict[&quot;Leaf&quot;], [:timestep, :node])</code></pre><div><div style = "float: left;"><span>5×4 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">node</th><th style = "text-align: left;">timestep</th><th style = "text-align: left;">carbon_demand</th><th style = "text-align: left;">carbon_allocation</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">5</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.5</td><td style = "text-align: right;">0.124183</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">7</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.5</td><td style = "text-align: right;">0.124183</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">5</td><td style = "text-align: right;">2</td><td style = "text-align: right;">0.75</td><td style = "text-align: right;">0.157992</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">7</td><td style = "text-align: right;">2</td><td style = "text-align: right;">0.75</td><td style = "text-align: right;">0.157992</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">5</td><td style = "text-align: right;">9</td><td style = "text-align: right;">2</td><td style = "text-align: right;">0.75</td><td style = "text-align: right;">0.157992</td></tr></tbody></table></div><p>多尺度模拟的一个示例输出可以在 PlantBiophysics.jl 的文档中看到：</p><p><img src="www/image.png" alt="植物生长模拟"/></p><h2 id="领域现状"><a class="docs-heading-anchor" href="#领域现状">领域现状</a><a id="领域现状-1"></a><a class="docs-heading-anchor-permalink" href="#领域现状" title="Permalink"></a></h2><p>PlantSimEngine 是最前沿的植物模拟软件，相比 OpenAlea、STICS、APSIM 或 DSSAT 等已有工具具备显著优势。</p><p>PlantSimEngine 基于 Julia 编程语言，带来了如下好处：</p><ul><li>与编译型语言相比，原型开发更加快速、便捷</li><li>性能显著优于典型的解释型语言</li><li>无需将模型转换到其他编译型语言</li></ul><p>Julia 的特性赋予 PlantSimEngine 以下能力：</p><ul><li>多重分派，自动计算模型依赖图</li><li>类型稳定性，优化运行性能</li><li>与 MultiScaleTreeGraph.jl 等强大工具无缝兼容，支持多尺度计算</li></ul><p>PlantSimEngine 的实现大大简化了模型开发流程，可以自动管理：</p><ul><li>通过自动依赖图计算实现模型耦合</li><li>时间步长与并行化</li><li>输入与输出变量</li><li>支持多种用于模拟的对象类型（如向量、字典、多尺度树图等）</li></ul><h2 id="使用-PlantSimEngine-的项目"><a class="docs-heading-anchor" href="#使用-PlantSimEngine-的项目">使用 PlantSimEngine 的项目</a><a id="使用-PlantSimEngine-的项目-1"></a><a class="docs-heading-anchor-permalink" href="#使用-PlantSimEngine-的项目" title="Permalink"></a></h2><p>以下项目已经应用了 PlantSimEngine：</p><ul><li><a href="https://github.com/VEZY/PlantBiophysics.jl">PlantBiophysics.jl</a></li><li><a href="https://github.com/PalmStudio/XPalm.jl">XPalm</a></li></ul><h2 id="让它成为你的工具"><a class="docs-heading-anchor" href="#让它成为你的工具">让它成为你的工具</a><a id="让它成为你的工具-1"></a><a class="docs-heading-anchor-permalink" href="#让它成为你的工具" title="Permalink"></a></h2><p>本包的开发旨在让任何人都能轻松地实现植物/作物建模，并可凭借 MIT 许可证免费自由地使用。</p><p>如果你开发了相关工具但尚未在此列表中，请提交 PR 或与我联系，我们会很高兴地添加你的项目！😃</p></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？ »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Saturday 10 January 2026 19:42">Saturday 10 January 2026</span>. Using Julia version 1.12.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>简单植株模拟 · PlantSimEngine.jl</title><meta name="title" content="简单植株模拟 · PlantSimEngine.jl"/><meta property="og:title" content="简单植株模拟 · PlantSimEngine.jl"/><meta property="twitter:title" content="简单植株模拟 · PlantSimEngine.jl"/><meta name="description" content="Documentation for PlantSimEngine.jl."/><meta property="og:description" content="Documentation for PlantSimEngine.jl."/><meta property="twitter:description" content="Documentation for PlantSimEngine.jl."/><meta property="og:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_1.html"/><meta property="twitter:url" content="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_1.html"/><link rel="canonical" href="https://VirtualPlantLab.github.io/PlantSimEngine.jl/multiscale\\multiscale_example_1.html"/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../index.html">PlantSimEngine.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../index.html">首页</a></li><li><span class="tocitem">简介</span><ul><li><a class="tocitem" href="../introduction/why_plantsimengine.html">为什么选择 PlantSimEngine？</a></li><li><a class="tocitem" href="../introduction/why_julia.html">为什么选择 Julia？</a></li></ul></li><li><span class="tocitem">前置条件</span><ul><li><a class="tocitem" href="../prerequisites/installing_plantsimengine.html">PlantSimEngine 的安装与运行</a></li><li><a class="tocitem" href="../prerequisites/key_concepts.html">关键概念</a></li><li><a class="tocitem" href="../prerequisites/julia_basics.html">Julia 语言基础</a></li></ul></li><li><span class="tocitem">分步教程 - 单尺度模拟</span><ul><li><a class="tocitem" href="../step_by_step/detailed_first_example.html">详细的第一个模拟</a></li><li><a class="tocitem" href="../step_by_step/simple_model_coupling.html">模型耦合</a></li><li><a class="tocitem" href="../step_by_step/model_switching.html">模型切换</a></li><li><a class="tocitem" href="../step_by_step/quick_and_dirty_examples.html">快速示例</a></li><li><a class="tocitem" href="../step_by_step/implement_a_process.html">实现一个过程</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model.html">实现一个模型</a></li><li><a class="tocitem" href="../step_by_step/parallelization.html">并行化</a></li><li><a class="tocitem" href="../step_by_step/advanced_coupling.html">高级耦合与硬依赖</a></li><li><a class="tocitem" href="../step_by_step/implement_a_model_additional.html">实现一个模型：补充说明</a></li></ul></li><li><a class="tocitem" href="../model_execution.html">模型执行</a></li><li><span class="tocitem">数据处理</span><ul><li><a class="tocitem" href="../working_with_data/reducing_dof.html">降低自由度</a></li><li><a class="tocitem" href="../working_with_data/fitting.html">拟合</a></li><li><a class="tocitem" href="../working_with_data/inputs.html">输入类型</a></li><li><a class="tocitem" href="../working_with_data/visualising_outputs.html">可视化输出与数据</a></li><li><a class="tocitem" href="../working_with_data/floating_point_accumulation_error.html">浮点运算注意事项</a></li></ul></li><li><span class="tocitem">多尺度建模</span><ul><li><a class="tocitem" href="multiscale_considerations.html">多尺度建模考量</a></li><li><a class="tocitem" href="single_to_multiscale.html">单尺度模型转换为多尺度</a></li><li><a class="tocitem" href="multiscale.html">更多变量映射示例</a></li><li><a class="tocitem" href="multiscale_cyclic.html">循环依赖的处理</a></li><li><a class="tocitem" href="multiscale_coupling.html">多尺度耦合相关说明</a></li><li><input class="collapse-toggle" id="menuitem-7-6" type="checkbox" checked/><label class="tocitem" for="menuitem-7-6"><span class="docs-label">构建简单植株</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href="multiscale_example_1.html">简单植株模拟</a><ul class="internal"><li><a class="tocitem" href="#声明"><span>声明</span></a></li><li><a class="tocitem" href="#初始化设置"><span>初始化设置</span></a></li><li><a class="tocitem" href="#一个基础的生长植物模型"><span>一个基础的生长植物模型</span></a></li><li><a class="tocitem" href="#实现"><span>实现</span></a></li></ul></li><li><a class="tocitem" href="multiscale_example_2.html">拓展植株模拟</a></li><li><a class="tocitem" href="multiscale_example_3.html">修复植株模拟中的错误</a></li></ul></li><li><a class="tocitem" href="multiscale_example_4.html">用 PlantGeom 可视化玩具植株</a></li></ul></li><li><span class="tocitem">故障排查与测试</span><ul><li><a class="tocitem" href="../troubleshooting_and_testing/plantsimengine_and_julia_troubleshooting.html">故障排查</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/downstream_tests.html">自动化测试</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/tips_and_workarounds.html">技巧与常见问题</a></li><li><a class="tocitem" href="../troubleshooting_and_testing/implicit_contracts.html">隐性约定</a></li></ul></li><li><span class="tocitem">API</span><ul><li><a class="tocitem" href="../API/API_public.html">公共 API</a></li><li><a class="tocitem" href="../API/API_examples.html">示例模型</a></li><li><a class="tocitem" href="../API/API_private.html">内部 API</a></li></ul></li><li><a class="tocitem" href="../documentation_improvement.html">改进文档</a></li><li><a class="tocitem" href="../developers.html">开发者指南</a></li><li><a class="tocitem" href="../planned_features.html">规划功能</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">多尺度建模</a></li><li><a class="is-disabled">构建简单植株</a></li><li class="is-active"><a href="multiscale_example_1.html">简单植株模拟</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="multiscale_example_1.html">简单植株模拟</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/docs - 中文/src/multiscale/multiscale_example_1.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="编写多尺度模拟"><a class="docs-heading-anchor" href="#编写多尺度模拟">编写多尺度模拟</a><a id="编写多尺度模拟-1"></a><a class="docs-heading-anchor-permalink" href="#编写多尺度模拟" title="Permalink"></a></h1><p>本小节分为三部分，逐步带你从零构建一个多尺度模拟。这主要演示你在开发和逐步调整一个功能-结构植物模型（FSPM）过程中会经历的迭代流程，而前面的多尺度示例更多侧重于API语法的介绍。</p><p>你可以在示例文件夹下的 <a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/examples/ToyMultiScalePlantModel/ToyPlantSimulation1.jl">ToyMultiScalePlantModel</a> 子目录找到本节第一部分的玩具模拟完整脚本。</p><ul><li><a href="multiscale_example_1.html#编写多尺度模拟">编写多尺度模拟</a></li><li class="no-marker"><ul><li><a href="multiscale_example_1.html#声明">声明</a></li><li><a href="multiscale_example_1.html#初始化设置">初始化设置</a></li><li><a href="multiscale_example_1.html#一个基础的生长植物模型">一个基础的生长植物模型</a></li><li><a href="multiscale_example_1.html#实现">实现</a></li><li class="no-marker"><ul><li><a href="multiscale_example_1.html#碳捕获">碳捕获</a></li><li><a href="multiscale_example_1.html#资源储存">资源储存</a></li><li><a href="multiscale_example_1.html#器官创建">器官创建</a></li><li><a href="multiscale_example_1.html#更新后的映射">更新后的映射</a></li><li><a href="multiscale_example_1.html#运行模拟">运行模拟</a></li></ul></li></ul></li></ul><h2 id="声明"><a class="docs-heading-anchor" href="#声明">声明</a><a id="声明-1"></a><a class="docs-heading-anchor-permalink" href="#声明" title="Permalink"></a></h2><p>这里实现的“植物”以及自定义模型并没有真正的生物学意义，仅为临时拼凑（因此大多也不是 examples 文件夹内的标准独立模型）。同样地，许多参数都纯属虚构，并不对应真实的文献或实验数据。</p><p>这里的重点在于展示 PlantSimEngine 的多尺度特性和模型的组织方式，而不是准确性、现实性或性能。</p><h2 id="初始化设置"><a class="docs-heading-anchor" href="#初始化设置">初始化设置</a><a id="初始化设置-1"></a><a class="docs-heading-anchor-permalink" href="#初始化设置" title="Permalink"></a></h2><p>像往常一样，我们需要先在 Julia 环境中添加并使用几个包：</p><pre><code class="language-julia hljs">using PlantSimEngine
+using PlantSimEngine.Examples # 导入 ToyDegreeDaysCumulModel 示例模型
+using PlantMeteo
+using MultiScaleTreeGraph # 多尺度
+using CSV, DataFrames # 导入示例气象数据</code></pre><h2 id="一个基础的生长植物模型"><a class="docs-heading-anchor" href="#一个基础的生长植物模型">一个基础的生长植物模型</a><a id="一个基础的生长植物模型-1"></a><a class="docs-heading-anchor-permalink" href="#一个基础的生长植物模型" title="Permalink"></a></h2><p>要模拟一个简单的“生长”过程，至少需要：</p><ul><li>一个多尺度树图（MTG）来表示植物本体</li><li>一种向植物中添加新器官的方法</li><li>某种时间推进机制，让生长能够跨多个时间步展开</li></ul><p>我们先设定一个“叶片”的概念，用以吸收生长器官所需的（碳）资源；器官的产生则发生在“节间”层级，这样可以演示不同类型器官的行为差异。</p><p>我们将假设节间利用的是来自公共碳池的碳。我们还将利用积温作为生长延迟因子。</p><p>总结下来，模型包括如下内容：</p><ul><li>一个包含生长中节间和叶片的 MTG</li><li>不同叶片分别吸收碳，但都汇总到一个公共池</li><li>节间从碳池中获取资源来制造新器官，但过程受到积温的限制</li></ul><p>这种建模方式可以按照多个尺度和模型来实现：</p><ul><li>场景（Scene）尺度：用于累积温度积算时间。 <a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/examples/ToyDegreeDays.jl">examples 文件夹</a> 中的 <a href="single_to_multiscale.html#ToyDegreeDaysCumulModel"><code>ToyDegreeDaysCumulModel</code></a> 可根据温度数据计算积温</li><li>植株（Plant）尺度：定义碳资源池</li><li>节间（Internode）尺度：从碳池中抽取碳，产生新器官</li><li>叶片（Leaf）尺度：负责碳捕获</li></ul><p>此外，我们还人为地引入一个限制：如果总叶面积超过某一阈值，则不再生成新器官。</p><p>仿真的模型与比例映射大致如下所示（实际会更复杂）：</p><pre><code class="language-julia hljs">mapping = Dict(
+&quot;Scene&quot; =&gt; ToyDegreeDaysCumulModel(),
+&quot;Plant&quot; =&gt; ToyStockComputationModel(),
+&quot;Internode&quot; =&gt; ToyCustomInternodeEmergence(),
+&quot;Leaf&quot; =&gt; ToyLeafCarbonCaptureModel(),
+)</code></pre><p>其中，部分模型需要获取别的尺度上的变量信息，因此需要转化为 MultiScaleModels。</p><h2 id="实现"><a class="docs-heading-anchor" href="#实现">实现</a><a id="实现-1"></a><a class="docs-heading-anchor-permalink" href="#实现" title="Permalink"></a></h2><h3 id="碳捕获"><a class="docs-heading-anchor" href="#碳捕获">碳捕获</a><a id="碳捕获-1"></a><a class="docs-heading-anchor-permalink" href="#碳捕获" title="Permalink"></a></h3><p>我们先从最简单的模型开始。我们的“假”叶片在每个时间步都持续固定地捕获一定量的碳。该模型不需要任何输入或参数。</p><pre><code class="language-julia hljs">PlantSimEngine.@process &quot;leaf_carbon_capture&quot; verbose = false
+
+struct ToyLeafCarbonCaptureModel&lt;: AbstractLeaf_Carbon_CaptureModel end
+
+function PlantSimEngine.inputs_(::ToyLeafCarbonCaptureModel)
+    NamedTuple() # 无需输入
+end
+
+function PlantSimEngine.outputs_(::ToyLeafCarbonCaptureModel)
+    (carbon_captured=0.0,)
+end
+
+function PlantSimEngine.run!(::ToyLeafCarbonCaptureModel, models, status, meteo, constants, extra)
+    status.carbon_captured = 40
+end</code></pre><h3 id="资源储存"><a class="docs-heading-anchor" href="#资源储存">资源储存</a><a id="资源储存-1"></a><a class="docs-heading-anchor-permalink" href="#资源储存" title="Permalink"></a></h3><p>用于存储整个植株资源的模型需要两个输入：叶片捕获的碳量，以及用于新器官形成所消耗的碳量。该模型输出当前的碳库量。</p><pre><code class="language-julia hljs">PlantSimEngine.@process &quot;resource_stock_computation&quot; verbose = false
+
+struct ToyStockComputationModel &lt;: AbstractResource_Stock_ComputationModel
+end
+
+PlantSimEngine.inputs_(::ToyStockComputationModel) =
+(carbon_captured=0.0,carbon_organ_creation_consumed=0.0)
+
+PlantSimEngine.outputs_(::ToyStockComputationModel) = (carbon_stock=-Inf,)
+
+function PlantSimEngine.run!(m::ToyStockComputationModel, models, status, meteo, constants=nothing, extra=nothing)
+    status.carbon_stock += sum(status.carbon_captured) - sum(status.carbon_organ_creation_consumed)
+end</code></pre><h3 id="器官创建"><a class="docs-heading-anchor" href="#器官创建">器官创建</a><a id="器官创建-1"></a><a class="docs-heading-anchor-permalink" href="#器官创建" title="Permalink"></a></h3><p>本模型为 ToyInternodeEmergence 模型的改进版本，<a href="https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/examples/ToyInternodeEmergence.jl">可以在 examples 文件夹中找到</a>。一个节间会生成两个叶片和一个新的节间。</p><p>我们首先定义一个辅助函数，用于遍历多尺度树图，并返回叶片的数量：</p><pre><code class="language-julia hljs">function get_n_leaves(node::MultiScaleTreeGraph.Node)
+    root = MultiScaleTreeGraph.get_root(node)
+    nleaves = length(MultiScaleTreeGraph.traverse(root, x-&gt;1, symbol=&quot;Leaf&quot;))
+    return nleaves
+end</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">get_n_leaves (generic function with 1 method)</code></pre><p>现在我们已经有了这些，让我们为模型定义几个参数。需要以下参数：</p><ul><li>一个积温出苗阈值</li><li>器官形成的碳消耗成本</li></ul><p>我们还将添加另外几个参数，这些参数可以放在其他位置：</p><ul><li>叶片的表面积（无变化，无生长阶段）</li><li>叶片最大表面积，超过此值器官形成停止</li></ul><pre><code class="language-julia hljs">PlantSimEngine.@process &quot;organ_emergence&quot; verbose = false
+
+struct ToyCustomInternodeEmergence{T} &lt;: AbstractOrgan_EmergenceModel
+    TT_emergence::T
+    carbon_internode_creation_cost::T
+    leaf_surface_area::T
+    leaves_max_surface_area::T
+end</code></pre><div class="admonition is-info" id="Note-5dfd7e395a27d595"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-5dfd7e395a27d595" title="Permalink"></a></header><div class="admonition-body"><p>这里我们采用了参数化类型而非直观的 Float64，以获得更高的灵活性。详情请参见<a href="../step_by_step/implement_a_model_additional.html#参数化类型">参数化类型</a>。</p></div></div><p>并为它们设置一些默认值：</p><pre><code class="language-julia hljs">ToyCustomInternodeEmergence(;TT_emergence=300.0, carbon_internode_creation_cost=200.0, leaf_surface_area=3.0, leaves_max_surface_area=100.0) = ToyCustomInternodeEmergence(TT_emergence, carbon_internode_creation_cost, leaf_surface_area, leaves_max_surface_area)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Main.ToyCustomInternodeEmergence</code></pre><p>节间模型需要积温和可用的碳，并输出碳的消耗量，以及最近一次器官发生时的积温（当同一节间可以多次产生新器官时很有用，但本例中不会发生）。</p><pre><code class="language-julia hljs">PlantSimEngine.inputs_(m::ToyCustomInternodeEmergence) = (TT_cu=0.0, carbon_stock=0.0)
+PlantSimEngine.outputs_(m::ToyCustomInternodeEmergence) = (TT_cu_emergence=0.0, carbon_organ_creation_consumed=0.0)</code></pre><p>最后，<a href="../API/API_public.html#PlantSimEngine.run!"><code>run!</code></a> 函数会检查是否满足创建新器官的条件：</p><ul><li>积温超过阈值</li><li>所有叶片的总表面积不超过限定阈值</li><li>碳储量充足</li><li>该节间还没有创建新器官</li></ul><p>满足条件时会更新 MTG。</p><pre><code class="language-julia hljs">function PlantSimEngine.run!(m::ToyCustomInternodeEmergence, models, status, meteo, constants=nothing, sim_object=nothing)
+
+    leaves_surface_area = m.leaf_surface_area * get_n_leaves(status.node)
+    status.carbon_organ_creation_consumed = 0.0
+
+    if leaves_surface_area &gt; m.leaves_max_surface_area
+        return nothing
+    end
+
+    # if not enough carbon, no organ creation
+    if status.carbon_stock &lt; m.carbon_internode_creation_cost
+        return nothing
+    end
+
+    if length(MultiScaleTreeGraph.children(status.node)) == 2 &amp;&amp;
+        status.TT_cu - status.TT_cu_emergence &gt;= m.TT_emergence
+        status_new_internode = add_organ!(status.node, sim_object, &quot;&lt;&quot;, &quot;Internode&quot;, 2, index=1)
+        add_organ!(status_new_internode.node, sim_object, &quot;+&quot;, &quot;Leaf&quot;, 2, index=1)
+        add_organ!(status_new_internode.node, sim_object, &quot;+&quot;, &quot;Leaf&quot;, 2, index=1)
+
+        status_new_internode.TT_cu_emergence = m.TT_emergence - status.TT_cu
+        status.carbon_organ_creation_consumed = m.carbon_internode_creation_cost
+    end
+
+    return nothing
+end</code></pre><h3 id="更新后的映射"><a class="docs-heading-anchor" href="#更新后的映射">更新后的映射</a><a id="更新后的映射-1"></a><a class="docs-heading-anchor-permalink" href="#更新后的映射" title="Permalink"></a></h3><p>现在我们可以为本次模拟定义最终的映射。</p><p>碳捕获和积温模型不需要从早期版本进行更改。 &quot;节间&quot;尺度的器官创建模型需要来自&quot;植株&quot;尺度的碳库存，以及来自&quot;场景&quot;尺度的积温。 &quot;植株&quot;尺度的资源存储模型需要<strong>每个</strong>叶片捕获的碳，以及<strong>每个</strong>在此时间步创建了新器官的节间所消耗的碳。这需要对向量变量进行映射：</p><pre><code class="language-julia hljs"> mapped_variables=[
+            :carbon_captured=&gt;[&quot;Leaf&quot;],
+            :carbon_organ_creation_consumed=&gt;[&quot;Internode&quot;]
+        ],</code></pre><p>这与只映射单变量（如碳存量）有所不同。例如：</p><pre><code class="language-julia hljs"> mapped_variables=[:TT_cu =&gt; &quot;Scene&quot;,
+            PreviousTimeStep(:carbon_stock)=&gt;&quot;Plant&quot;],</code></pre><p>当然，某些变量也需要在 status 结构体中初始化：</p><pre><code class="language-julia hljs">mapping = Dict(
+    &quot;Scene&quot; =&gt; ToyDegreeDaysCumulModel(),
+    &quot;Plant&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyStockComputationModel(),
+            mapped_variables=[
+                :carbon_captured=&gt;[&quot;Leaf&quot;],
+                :carbon_organ_creation_consumed=&gt;[&quot;Internode&quot;]
+            ],
+        ),
+        Status(carbon_stock = 0.0)
+    ),
+    &quot;Internode&quot; =&gt; (
+        MultiScaleModel(
+            model=ToyCustomInternodeEmergence(), # TT_emergence=20.0
+            mapped_variables=[
+                :TT_cu =&gt; &quot;Scene&quot;,
+                PreviousTimeStep(:carbon_stock)=&gt;&quot;Plant&quot;
+            ],
+        ),
+        Status(carbon_organ_creation_consumed=0.0),
+    ),
+    &quot;Leaf&quot; =&gt; ToyLeafCarbonCaptureModel(),
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{String, Any} with 4 entries:
+  &quot;Internode&quot; =&gt; (MultiScaleModel{ToyCustomInternodeEmergence{Float64}, Vector{…
+  &quot;Scene&quot;     =&gt; ToyDegreeDaysCumulModel(0.0, 10.0, 43.0)
+  &quot;Plant&quot;     =&gt; (MultiScaleModel{ToyStockComputationModel, Vector{Pair{Union{S…
+  &quot;Leaf&quot;      =&gt; ToyLeafCarbonCaptureModel()</code></pre><div class="admonition is-info" id="Note-f1b33b09c968e58c"><header class="admonition-header">Note<a class="admonition-anchor" href="#Note-f1b33b09c968e58c" title="Permalink"></a></header><div class="admonition-body"><p>以上代码片段（以及完整脚本）展示了经过完整初始化的最终映射结构。但在开发过程中，建议多使用辅助函数<a href="../API/API_public.html#PlantSimEngine.to_initialize-Tuple{ModelList}"><code>to_initialize</code></a>并关注 PlantSimEngine 的用户报错信息，以便及时发现和修正未初始化的变量。</p></div></div><h3 id="运行模拟"><a class="docs-heading-anchor" href="#运行模拟">运行模拟</a><a id="运行模拟-1"></a><a class="docs-heading-anchor-permalink" href="#运行模拟" title="Permalink"></a></h3><p>我们只需要一个 MTG，以及一些气象数据，就可以开始模拟了。让我们先创建一个简单的 MTG：</p><pre><code class="language-julia hljs"> mtg = MultiScaleTreeGraph.Node(MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Scene&quot;, 1, 0))
+    plant = MultiScaleTreeGraph.Node(mtg, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Plant&quot;, 1, 1))
+
+    internode1 = MultiScaleTreeGraph.Node(plant, MultiScaleTreeGraph.NodeMTG(&quot;/&quot;, &quot;Internode&quot;, 1, 2))
+    MultiScaleTreeGraph.Node(internode1, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Leaf&quot;, 1, 2))
+    MultiScaleTreeGraph.Node(internode1, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Leaf&quot;, 1, 2))
+
+    internode2 = MultiScaleTreeGraph.Node(internode1, MultiScaleTreeGraph.NodeMTG(&quot;&lt;&quot;, &quot;Internode&quot;, 1, 2))
+    MultiScaleTreeGraph.Node(internode2, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Leaf&quot;, 1, 2))
+    MultiScaleTreeGraph.Node(internode2, MultiScaleTreeGraph.NodeMTG(&quot;+&quot;, &quot;Leaf&quot;, 1, 2))</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">+ 8: Leaf
+</code></pre><p>导入气象数据：</p><pre><code class="language-julia hljs">meteo_day = CSV.read(joinpath(pkgdir(PlantSimEngine), &quot;examples/meteo_day.csv&quot;), DataFrame, header=18)</code></pre><p>就可以开始模拟啦！</p><pre><code class="language-julia hljs">outs = run!(mtg, mapping, meteo_day)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Dict{String, Vector} with 4 entries:
+  &quot;Internode&quot; =&gt; Status{(:timestep, :node, :TT_cu, :carbon_stock, :carbon_organ…
+  &quot;Scene&quot;     =&gt; Status{(:timestep, :node, :TT_cu, :TT), Tuple{RefValue{Int64},…
+  &quot;Plant&quot;     =&gt; Status{(:timestep, :node, :carbon_organ_creation_consumed, :ca…
+  &quot;Leaf&quot;      =&gt; Status{(:timestep, :node, :carbon_captured), Tuple{RefValue{In…</code></pre><p>如果你在模拟之后查询或显示 MTG，你会发现它扩展并生长出了多个节间和叶片：</p><pre><code class="language-julia hljs">mtg
+# get_n_leaves(mtg)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">/ 1: Scene
+└─ + 2: Plant
+   └─ / 3: Internode
+      ├─ + 4: Leaf
+      ├─ + 5: Leaf
+      └─ &lt; 6: Internode
+         ├─ + 7: Leaf
+         ├─ + 8: Leaf
+         └─ &lt; 9: Internode
+            ├─ + 10: Leaf
+            ├─ + 11: Leaf
+            └─ &lt; 12: Internode
+               ├─ + 13: Leaf
+               ├─ + 14: Leaf
+               └─ &lt; 15: Internode
+                  ├─ + 16: Leaf
+                  ├─ + 17: Leaf
+                  └─ &lt; 18: Internode
+                     ├─ + 19: Leaf
+                     ├─ + 20: Leaf
+                     └─ &lt; 21: Internode
+                        ├─ + 22: Leaf
+                        ├─ + 23: Leaf
+                        └─ &lt; 24: Internode
+…</code></pre><p>就是这样！可以随意调整参数，看看什么时候模拟会崩溃，从而更好地理解模拟过程。</p><p>当然，这只是一个非常粗糙且不现实的模拟，存在很多有问题的假设和参数。但通过同样的方法，也可以实现显著更复杂的建模：XPalm 就是在九个尺度上，利用几十个模型运行的。</p><p>本教程为三部分内容，后续章节请参考<a href="multiscale_example_2.html#扩展多尺度模拟">扩展多尺度模拟</a>。</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="multiscale_coupling.html">« 多尺度耦合相关说明</a><a class="docs-footer-nextpage" href="multiscale_example_2.html">拓展植株模拟 »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Saturday 10 January 2026 19:42">Saturday 10 January 2026</span>. Using Julia version 1.12.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
