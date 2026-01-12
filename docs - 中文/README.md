@@ -1,3 +1,27 @@
+**Summary:**  
+Add Chinese translation for documentation and source code comments
+
+**Description:**  
+This PR introduces Chinese-language support for the project's documentation and source code. The changes include:
+
+**Added Folders:**  
+1. `docs - 中文` – Contains the fully translated documentation in Chinese  
+2. `src - 中文` – Contains the source code files with Chinese translations of code comments
+
+**Key Features:**  
+- Complete Chinese translation of the documentation for better accessibility to Chinese-speaking users  
+- Translated source code comments to help Chinese developers understand and contribute to the codebase  
+- No modifications to the original source logic or functionality – only translation of text content
+
+**Notes:**  
+- The original `docs` and `src` folders remain unchanged  
+- The translation covers all user-facing documentation and in-code documentation (docstrings/comments)  
+- Ready for review by bilingual contributors to ensure translation accuracy
+
+This effort aims to make the project more inclusive and accessible to the Chinese developer community.
+
+---
+
 # Step 1: Prepare Files
 In your `PlantSimEngine.jl` directory:
 
